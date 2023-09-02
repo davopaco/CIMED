@@ -1,17 +1,17 @@
-var mysql = require('mysql');
+const mysql = require('mysql2');
 
-var con=mysql.createConnection({
-    host: "",
-    user: "",
-    password: "",
-    database: "",
-    waitForConnections: true,
-    queueLimit: 0
-});
-
-con.connect(function(err){
-    if(err) throw err;
-    console.log("Database was successfully connected!");
-});
-
-module.exports = con;
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'alexandra',
+    database: 'CIMED',
+    insecureAuth: true, // Establece esto a true
+  });
+  
+  connection.connect((err) => {
+    if (err) {
+      console.error('Error al conectar a MySQL:', err);
+    } else {
+      console.log('Conexión exitosa a MySQL');
+    }
+  });
