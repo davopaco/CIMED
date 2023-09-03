@@ -48,15 +48,16 @@
 <body>
     <div class="container">
         <h1>Agendar Cita</h1>
-        <form>
+        <form action="/agendar" method="get">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
 
-            <label for="Especialidad">Especialidad</label>
-            <select id="Especialidad" name="Especialidad" required>
-                <option value="Nutrición">Nutrición</option>
-                <option value="Ortopedia">Ortopedia</option>
-                <option value="Cardiologia">Cardiologia</option>
+            <label for="especialidad">Especialidad</label>
+            <select id="especialidad" name="Especialidad" required>
+                <option value="">Seleccione una especialidad</option>
+                <option value="nutricion">Nutrición</option>
+                <option value="ortopedia">Ortopedia</option>
+                <option value="cardiologia">Cardiologia</option>
             </select>
 
             <label for="fecha">Fecha:</label>
@@ -70,14 +71,60 @@
                 <!-- Agrega más opciones de hora según tus necesidades -->
             </select>
 
-           
-
-            <button type="submit">Agendar Cita</button>
+            <label for="doctor">Seleccione un doctor:</label>
+            <select id="doctor" name="doctor" disabled>
+                <option value="">Seleccione una especialidad primero</option>
+                <!-- Los doctores disponibles se cargarán aquí después de seleccionar una especialidad -->
+            </select>
+    
+            <button type="submit">Agendar Cita</button>   
         </form>
-    </div>
-
-    <div id="doctores" class="container">
 
     </div>
+
+    <script>
+        const especialidadSelect = document.getElementById("especialidad");
+        const doctorSelect = document.getElementById("doctor");
+
+        // Mapeo de especialidades y doctores (simulado)
+        const especialidadesDoctores = {
+            cardiologia: ["Dr. Pérez", "Dr. Rodríguez"],
+            nutricion: ["María Rodriguez", "Liset Sanabria"],
+            ortopedia: ["Dr. López", "Dra. Martínez"]
+            // Agrega más especialidades y doctores aquí
+        };
+
+        especialidadSelect.addEventListener("change", function () {
+            const selectedEspecialidad = especialidadSelect.value;
+            const doctores = especialidadesDoctores[selectedEspecialidad] || [];
+
+            // Limpia y actualiza el menú de doctores
+            doctorSelect.innerHTML = "";
+            if (doctores.length === 0) {
+                const option = document.createElement("option");
+                option.textContent = "No hay doctores disponibles";
+                doctorSelect.appendChild(option);
+                doctorSelect.disabled = true;
+            } else {
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "Seleccione un doctor";
+                doctorSelect.appendChild(defaultOption);
+                doctores.forEach(doctor => {
+                    const option = document.createElement("option");
+                    option.value = doctor;
+                    option.textContent = doctor;
+                    doctorSelect.appendChild(option);
+                });
+                doctorSelect.disabled = false;
+            }
+        });
+    </script>
+
+    
+
+
+
+    
 </body>
 </html>

@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
     database: 'CIMED',
     insecureAuth: true, // Establece esto a true
   });
-  
+
   connection.connect((err) => {
     if (err) {
       console.error('Error al conectar a MySQL:', err);
