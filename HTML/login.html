@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register</title>
+</head>
+<body>
+    <div id="registration-form" method= "POST" action="/register" style="display: none;">
+        <h2>Register</h2>
+        <form id="register-form">
+            <div>
+                <label for="register-username">Username:</label>
+                <input type="text" id="id" name="id" required>
+            </div>
+            <div>
+                <label for="register-password">Password:</label>
+                <input type="password" id="register-password" name="register-password" required>
+            </div>
+            <div>
+                <button type="submit" id="register-button">Register</button>
+            </div>
+        </form>
+        <p>Already have an account? <a href="#" id="show-login-form">Login</a></p>
+    </div>
+
+    <div id="login-form">
+        <h2>Login</h2>
+        <form id="login-form" method="post" action="/login">
+            <div>
+                <label for="login-username">Username:</label>
+                <input type="text" id="id" name="id" required>
+            </div>
+            <div>
+                <label for="login-password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <button type="submit" id="login-button" value="Login">Login</button>
+            </div>
+        </form>
+        <p>Don't have an account? <a href="#" id="show-registration-form">Register</a></p>
+    </div>
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const registrationForm = document.getElementById('registration-form');
+        const showRegistrationLink = document.getElementById('show-registration-form');
+        const showLoginLink = document.getElementById('show-login-form');
+
+        showRegistrationLink.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            registrationForm.style.display = 'block';
+        });
+
+        showLoginLink.addEventListener('click', () => {
+            registrationForm.style.display = 'none';
+            loginForm.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
