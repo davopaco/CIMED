@@ -186,7 +186,7 @@ background: linear-gradient(
     background-color: #7a7a9a;
 }
 
-.container-form1{
+.registro{
     height: 750px;
     max-width: 900px;
     display: flex;
@@ -205,7 +205,6 @@ background: linear-gradient(
     position: absolute;
     transform: translateY(-300%);
 }
-
 
 /*Responsive*/
 @media screen and (max-width:750px) {
