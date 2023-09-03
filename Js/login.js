@@ -20,3 +20,9 @@ btnSignIn2 .addEventListener("click", e => {
     formInicio.classList.add("hide")
     formRegistro.classList.remove("hide1")
 });
+
+
+//funcion para imagen logo en login redirija a pagina principal
+function redirectInit(){
+    location.href = "index.html";
+}
