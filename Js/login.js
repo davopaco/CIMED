@@ -1,23 +1,22 @@
-$(document).ready(function() {
-    var panelOne = $('.form-panel.two').height(),panelTwo = $('.form-panel.two')[0].scrollHeight;
+const btnSignIn = document.getElementById("sign-in"),
+      btnSignUp = document.getElementById("sign-up"),
+      btnSignUp2 = document.getElementById("sign-up2"),
+      btnSignIn2 = document.getElementById("sign-in2"),
+      formInicio = document.querySelector(".inicio"),
+      formRegistro = document.querySelector(".registro"),
+      formLogin = document.querySelector(".login");
 
-    $('.form-panel.two').not('.form-panel.two.active').on('click', function(e) {e.preventDefault();
+btnSignIn.addEventListener("click", e => {
+    formInicio.classList.add("hide")
+    formLogin.classList.remove("hide")
+});
 
-        $('.form-toggle').addClass('visible');
-        $('.form-panel.one').addClass('hidden');
-        $('.form-panel.two').addClass('active');
-        $('.form').animate({
-            'height': panelTwo
-        }, 200);
-    });
+btnSignUp.addEventListener("click", e => {
+    formLogin.classList.add("hide")
+    formRegistro.classList.remove("hide1")
+});
 
-    $('.form-toggle').on('click', function(e) {
-        e.preventDefault();
-        $(this).removeClass('visible');
-        $('.form-panel.one').removeClass('hidden');
-        $('.form-panel.two').removeClass('active');
-        $('.form').animate({
-        'height': panelOne
-        }, 200);
-    });
+btnSignIn2 .addEventListener("click", e => {
+    formInicio.classList.add("hide")
+    formRegistro.classList.remove("hide1")
 });
