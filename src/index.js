@@ -3,6 +3,7 @@ import loginPacRoutes from "./routes/user.routes.js";
 import {PORT} from './config.js';
 import bodyParser from 'body-parser';
 import citaRoutes from "./routes/citas.routes.js"
+import pacienteRoutes from "./routes/paciente.routes.js"
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json());
 app.use(loginPacRoutes);
 app.use(citaRoutes)
+app.use(pacienteRoutes)
 
 app.use((req, res)=>{
     res.status(404).json({
