@@ -16,10 +16,28 @@ export const loginUser = async (req, res) => {
 
     const isPasswordCorrect = bcrypt.compare(password, rows1[0].hash)
 
-    if(!isPasswordCorrect) return res.status(401).json({message: "La contraseña no es correcta!"})
+    if(!isPasswordCorrect) return res.status(401).json({message: "La contraseña no es correcta!"});
 
     console.log("Login success");
     res.status(200).json({message: "Login success"});
+}
+
+export const registerUser = async (req, res) => {
+    const { id, password } = req.body;
+    const saltGen=salt();
+    const hashedPsword=hashing(password, saltGen);
+
+    const [rows] = await pool.query("SELECT * FROM PACIENTE WHERE ID = ?",[id]);
+
+    if(rows.length>0) return res.status(409).json({
+        message: "El paciente ya existe. Intente nuevamente."
+    });
+
+    const [rows1] = await pool.query("INSERT INTO PACIENTE (ID, HASH, SALT) VALUES (?, ?, ?)",[id, (await hashedPsword).toString(), (await saltGen).toString()]);
+    if(rows1.affectedRows>0) return res.status(200).json({
+        message: "Usuario creado con exito!"
+    });
+
 }
 
 export const defaultR = (req, res)=>{
