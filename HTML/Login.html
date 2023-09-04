@@ -33,18 +33,7 @@
                 </div>
                 <p>Selecciona tu email para registrarse</p>
                 <form class="form">
-                    <label>
-                        <i class='bx bx-user' ></i>
-                        <input type="text" placeholder="Cedula">
-                    </label>
-                    <label>
-                        <i class='bx bx-envelope' ></i>
-                        <input type="email" placeholder="Ingrese su Correo Electrónico">
-                    </label>
-                    <label>
-                        <i class='bx bx-lock-alt' ></i>
-                        <input type="password" placeholder="Ingrese Contraseña">
-                    </label>
+                    <p>Completa el formulario de registro dando click en:</p>
                     <input type="button" value="Registrarse" id="sign-in2" class="Btn1">
                 </form>
             </div>
@@ -80,8 +69,31 @@
                     </label>
                     <label>
                         <i class='bx bxs-magic-wand'></i>
-                        <input type="text" placeholder="Tipo Sangre">
+                        <input placeholder="Tipo de sangre">
+                        <select name="menu">
+                            <option value="0">...</option>
+                            <option value="1">A+</option>
+                            <option value="2">A-</option>
+                            <option value="3">B+</option>
+                            <option value="4">B-</option>
+                            <option value="5">AB+</option>
+                            <option value="6">AB-</option>
+                            <option value="7">O+</option>
+                            <option value="8">O-</option>
+                        </select>
                     </label>
+                    <label>
+                        <i class='bx bxs-magic-wand'></i>
+                        <input placeholder="Estado Civil">
+                        <select name="menu">
+                            <option value="0">...</option>
+                            <option value="1">Casado</option>
+                            <option value="2">Soltero</option>
+                            <option value="3">Union Libre</option>
+                            <option value="4">Viudo/a</option>
+                        </select>
+                    </label>
+
                     <label>
                         <i class='bx bxs-map-pin'></i>
                         <input type="text" placeholder="Dirección">
@@ -108,7 +120,7 @@
                     </label>
                     <label>
                         <i class='bx bxs-image-add'></i>
-                        <input type="image" alt=" Imagen Perfil" style="color: #7a7a9a;">
+                        <input type="file" placeholder="Imagen perfil" style="color: #7a7a9a;">
                     </label>
                     
                 </form>
