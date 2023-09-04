@@ -3,19 +3,20 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import bcrypt from 'bcrypt';
 import { hashing, salt } from '../hashing.js';
-import bodyParser from 'body-parser';
 
 export const loginUser = async (req, res) => {
-    const {id, password} = req.body;
+    const {loginid, loginpassword} = req.body;
+    const id = loginid;
+    const password = loginpassword;
     const [rows] = await pool.query('SELECT * FROM PACIENTE WHERE ID=?', [id]);
 
     if(rows.length<=0) return res.status(404).json({
         message: "No existe ese paciente"
     });
 
-    const [rows1] = await pool.query('SELECT hash, salt FROM PACIENTE WHERE id=?', [id]);
+    const [rows1] = await pool.query('SELECT hash FROM PACIENTE WHERE id=?', [id]);
 
-    const isPasswordCorrect = bcrypt.compare(password, rows1[0].hash)
+    const isPasswordCorrect = await bcrypt.compare(password, rows1[0].hash);
 
     if(!isPasswordCorrect) return res.status(401).json({message: "La contraseña no es correcta!"});
 
