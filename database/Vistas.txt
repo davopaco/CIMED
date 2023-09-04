@@ -1,0 +1,39 @@
+
+INSERT INTO PACIENTE VALUES(1098745123, 'LIMONCONSAL',1,'LIMON','Pablo Bernal','2004-02-02','Bucaramanga',1,'p020204@gmail.com','calle 105 A #12-27',305410257,6352478,1,'AAAA');
+INSERT INTO PACIENTE VALUES(6311154, 'JAMONQUESO',2,'JAMON','Santiago Cardenas','2001-12-06','Boyaca',1,'davicito@hotmail.com','Tv 32#87-12',30788552,6345278,2,'bbbb');
+
+INSERT INTO ESPECIALIDAD VALUES(001,'General','remite a especialidades');
+
+INSERT INTO PROFESIONAL_SALUD VALUES(123,'Manuel Escalante','Junta central de médicos','BEBESITALINDA','LINDA','BBBBB',001);
+
+INSERT INTO ENFERMEDAD VALUES(041,'Diabetes','Enfermedad de la Azucar');
+INSERT INTO ENFERMEDAD VALUES(042,'Colesterol','Endurecimiento de las arterias');
+
+INSERT INTO CITA VALUES(101,'2023-08-29 10:30:00',1098745123,123,1);
+INSERT INTO CITA VALUES(102, '2023-08-29 11:00:00',6311154,123,1);
+
+INSERT INTO HISTORIAL_CLINICO VALUES(71,'2023-08-28','Diabetes etapa 3 desde los 5 años', 'ganas de vomitar a la hora de comer','Diabetes y tensión','NovoLog Mix 70/30','acetaminofen','Glucosa plásmatica 134,5
+' ,'Abdomen duro',041,1098745123,123);
+INSERT INTO HISTORIAL_CLINICO VALUES(72,'2023-08-29', null, 'ganas de vomitar después de comer','colesterol','Atorvastatina',null,'100 y 129 mg/dl
+' ,'null',042,6311154,123);
+
+INSERT INTO PRODUCTO VALUES(1410,'Tolbutamida 500 g','Tabletas de 10','Médicamento',40,10,50);
+INSERT INTO PRODUCTO VALUES(1420,'Glimepirida 1 MG','Tabletas de 5','Médicamento',15,10,40);
+INSERT INTO PRODUCTO VALUES(1421,'Glimepirida 2 MG','Tabletas de 8','Médicamento',50,10,50);
+INSERT INTO PRODUCTO VALUES(2110,'Jeringa 1 Ml','Una jeringa empacada','Elemento Sanitario',80,25,100);
+
+CREATE VIEW HISTORIAL AS
+SELECT h.ID,p.NOMBRE, h.PACIENTE_ID,h.FECHA_FORM,h.PASADO_MED,h.SINTOMAS, h.enfermedad_id,h.HISTORIAL_FAMILIAR, h.historial_medicacion, h.alergias, h.resultados_lab, h.examen_fis
+FROM HISTORIAL_CLINICO h, PACIENTE p;
+
+
+CREATE VIEW CITA_VIEW AS
+SELECT p.nombre, c.id_paciente, c.fecha_asig, c.tipo 
+FROM paciente p, cita c 
+WHERE c.id_MEDICO = 123 and p.id = c.id_paciente;
+
+CREATE VIEW inventario_stock AS
+SELECT id as 'Codigo' , nombre as 'Nombre del producto' , cantidad_stock as 'Cantidad Total'
+FROM producto;
+
+
