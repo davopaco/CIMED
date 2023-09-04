@@ -6,18 +6,18 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>CIMED/Login</title>
-    <link rel="shortcut icon" href="/icon/favicon.png">
+    <link rel="shortcut icon" href="../icon/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/CSS/Login.css">
+    <link rel="stylesheet" href="../stylesheets/Login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <div class="container-form inicio">
         <div class="information">
             <div class="info-childs">
-                <img src="/Img/logo.png" class="img" onclick="redirectInit()">
+                <img src="../images/logo.png" class="img" onclick="redirectInit()">
                 <h2>Bienvenido</h2>
                 <p>En <b>CIMED</b> consorcio empresarial de Salud pensamos en todo, por favor Inicia Sesión con tus datos.</p>
                 <input type="button" value="Iniciar Sesión" id="sign-in">
@@ -33,18 +33,7 @@
                 </div>
                 <p>Selecciona tu email para registrarse</p>
                 <form class="form">
-                    <label>
-                        <i class='bx bx-user' ></i>
-                        <input type="text" placeholder="Cedula">
-                    </label>
-                    <label>
-                        <i class='bx bx-envelope' ></i>
-                        <input type="email" placeholder="Ingrese su Correo Electrónico">
-                    </label>
-                    <label>
-                        <i class='bx bx-lock-alt' ></i>
-                        <input type="password" placeholder="Ingrese Contraseña">
-                    </label>
+                    <p>Completa el formulario de registro dando click en:</p>
                     <input type="button" value="Registrarse" id="sign-in2" class="Btn1">
                 </form>
             </div>
@@ -54,7 +43,7 @@
     <div class="container-form registro hide1">
         <div class="information">
             <div class="info-childs">
-                <img src="/Img/logo.png" class="img" onclick="redirectInit()">
+                <img src="../images/logo.png" class="img" onclick="redirectInit()">
                 <h2>Bienvenido</h2>
                 <p>Señor usuario se le informa que todos los datos serán validados</p>
                 <input type="submit" value="Registrarse" id="sign-up2">
@@ -62,53 +51,76 @@
         </div>
         <div class="form-information">
             <div class="form-information-childs">
-                <form class="form">
+                <form class="form" method="post" action="/register">
                     <label>
                         <i class='bx bx-captions'></i>
-                        <input type="text" placeholder="Cedula">
+                        <input type="text" placeholder="Cedula" id="cedulaR" name="cedulaR" required>
                     </label>
                     <label>
                         <i class='bx bx-user' ></i>
-                        <input type="text" placeholder="Nombre Completo">
+                        <input type="text" placeholder="Nombre Completo" id="nombreR" name="nombreR">
                     </label>
                     <label style="color: #7a7a9a" >Nacimiento
-                        <input type="date" style="color: #7a7a9a;">
+                        <input type="date" style="color: #7a7a9a;" id="fechaR" name="fechaR">
                     </label>
                     <label>
                         <i class='bx bxs-map-pin'></i>
-                        <input type="text" placeholder="Lugar de Nacimeito">
+                        <input type="text" placeholder="Lugar de Nacimiento" id="lugarNacR" name="lugarNacR">
                     </label>
                     <label>
                         <i class='bx bxs-magic-wand'></i>
-                        <input type="text" placeholder="Tipo Sangre">
+                        <input placeholder="Tipo de sangre">
+                        <select id="tipoSangR" name="tipoSangR">
+                            <option value="0">...</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </label>
+                    <label>
+                        <i class='bx bxs-magic-wand'></i>
+                        <input placeholder="Estado Civil">
+                        <select id="estadoCivR" name="estadoCivR">
+                            <option value="0">...</option>
+                            <option value="CASADO/A">CASADO/A</option>
+                            <option value="SOLTERO/A">SOLTERO/A</option>
+                            <option value="UNION LIBRE">UNION LIBRE</option>
+                            <option value="VIUDO/A">VIUDO/A</option>
+                        </select>
                     </label>
                     <label>
                         <i class='bx bxs-map-pin'></i>
-                        <input type="text" placeholder="Dirección">
+                        <input type="text" placeholder="Dirección" id="direccionR" name="direccionR">
                     </label>
                     <label>
                         <i class='bx bx-phone-call'></i>
-                        <input type="tel" placeholder="Fijo">
+                        <input type="tel" placeholder="Fijo" id="fijoR" name="fijoR">
                     </label>
                     <label>
                         <i class='bx bx-phone-call'></i>
-                        <input type="tel" placeholder="Movil">
+                        <input type="tel" placeholder="Movil" id="movilR" name="movilR">
                     </label>
                     <label>
                         <i class='bx bx-envelope' ></i>
-                        <input type="email" placeholder="Ingrese su Correo Electrónico">
+                        <input type="email" placeholder="Ingrese su Correo Electrónico" id="emailR" name="emailR" required>
                     </label>
                     <p style="color: #7a7a9a;">Sexo:
-                        <input type="radio" name="hm" value="h"> Hombre
-                        <input type="radio" name="hm" value="m"> Mujer
+                        <input type="radio" name="hm" value="f"> Femenino
+                        <input type="radio" name="hm" value="m"> Masculino
+                        <input type="radio" name="hm" value="i"> Intersex
                     </p>
                     <label>
                         <i class='bx bx-lock-alt' ></i>
-                        <input type="" placeholder="Ingrese Contraseña">
+                        <input type="" placeholder="Ingrese Contraseña" id="claveR" name="claveR" required>
                     </label>
                     <label>
                         <i class='bx bxs-image-add'></i>
-                        <input type="image" alt=" Imagen Perfil" style="color: #7a7a9a;">
+                        <input type="file" placeholder="Imagen perfil" style="color: #7a7a9a;">
                     </label>
                     
                 </form>
@@ -120,7 +132,7 @@
     <div class="container-form login hide">
         <div class="information">
             <div class="info-childs">
-                <img src="/Img/logo.png" class="img" onclick="redirectInit()">
+                <img src="../images/logo.png" class="img" onclick="redirectInit()">
                 <h2>¡¡Bienvenido nuevamente!!</h2>
                 <p>En <b>CIMED</b> consorcio empresarial de Salud pensamos en todo, por favor Inicia Sesión con tus datos.</p>
                 <input type="button" value="Registrarse" id="sign-up">
@@ -135,20 +147,20 @@
                     <i class='bx bxl-linkedin'></i>
                 </div>
                 <p>Iniciar sesión con una cuenta</p>
-                <form class="form">
+                <form class="form" method="post" action="/login">
                     <label>
                         <i class='bx bx-user' ></i>
-                        <input type="text" placeholder="Cedula">
+                        <input type="text" placeholder="Cedula" id="cedulaL" name="cedulaL">
                     </label>
                     <label>
                         <i class='bx bx-lock-alt' ></i>
-                        <input type="password" placeholder="Ingrese Contraseña">
+                        <input type="password" placeholder="Ingrese Contraseña" id="claveL" name="claveL">
                     </label>
                     <input type="submit" value="Iniciar Sesión">
                 </form>
             </div>
         </div>
     </div>
-    <script src="/Js/login.js"></script>
+    <script src="../javascripts/login.js"></script>
 </body>
 </html>
