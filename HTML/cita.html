@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agendar Cita</h1>
+        <form action="/agendar" method="get">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="especialidad">Especialidad</label>
+            <select id="especialidad" name="Especialidad" required>
+                <option value="">Seleccione una especialidad</option>
+                <option value="nutricion">Nutrición</option>
+                <option value="ortopedia">Ortopedia</option>
+                <option value="cardiologia">Cardiologia</option>
+            </select>
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <label for="hora">Hora:</label>
+            <select id="hora" name="hora" required>
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <!-- Agrega más opciones de hora según tus necesidades -->
+            </select>
+
+            <label for="doctor">Seleccione un doctor:</label>
+            <select id="doctor" name="doctor" disabled>
+                <option value="">Seleccione una especialidad primero</option>
+                <!-- Los doctores disponibles se cargarán aquí después de seleccionar una especialidad -->
+            </select>
+    
+            <button type="submit">Agendar Cita</button>   
+        </form>
+
+    </div>
+
+    <script>
+        const especialidadSelect = document.getElementById("especialidad");
+        const doctorSelect = document.getElementById("doctor");
+
+        // Mapeo de especialidades y doctores (simulado)
+        const especialidadesDoctores = {
+            cardiologia: ["Dr. Pérez", "Dr. Rodríguez"],
+            nutricion: ["María Rodriguez", "Liset Sanabria"],
+            ortopedia: ["Dr. López", "Dra. Martínez"]
+            // Agrega más especialidades y doctores aquí
+        };
+
+        especialidadSelect.addEventListener("change", function () {
+            const selectedEspecialidad = especialidadSelect.value;
+            const doctores = especialidadesDoctores[selectedEspecialidad] || [];
+
+            // Limpia y actualiza el menú de doctores
+            doctorSelect.innerHTML = "";
+            if (doctores.length === 0) {
+                const option = document.createElement("option");
+                option.textContent = "No hay doctores disponibles";
+                doctorSelect.appendChild(option);
+                doctorSelect.disabled = true;
+            } else {
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "Seleccione un doctor";
+                doctorSelect.appendChild(defaultOption);
+                doctores.forEach(doctor => {
+                    const option = document.createElement("option");
+                    option.value = doctor;
+                    option.textContent = doctor;
+                    doctorSelect.appendChild(option);
+                });
+                doctorSelect.disabled = false;
+            }
+        });
+    </script>
+
+    
+
+
+
+    
+</body>
+</html>
