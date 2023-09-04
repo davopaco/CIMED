@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import bcrypt from 'bcrypt';
 import { hashing, salt } from '../hashing.js';
+import bodyParser from 'body-parser';
 
 export const loginUser = async (req, res) => {
     const {id, password} = req.body;
@@ -23,11 +24,14 @@ export const loginUser = async (req, res) => {
 }
 
 export const registerUser = async (req, res) => {
-    const { id, password } = req.body;
-    const saltGen=salt();
-    const hashedPsword=hashing(password, saltGen);
+    const id = req.body.registerid;
+    const password = req.body.registerpassword;
+    console.log(id);
+    console.log(password);
 
     const [rows] = await pool.query("SELECT * FROM PACIENTE WHERE ID = ?",[id]);
+    const saltGen=salt();
+    const hashedPsword=hashing(password, saltGen);
 
     if(rows.length>0) return res.status(409).json({
         message: "El paciente ya existe. Intente nuevamente."

@@ -6,19 +6,19 @@
     <title>Login and Register</title>
 </head>
 <body>
-    <div id="registration-form" method= "post" action="/register" style="display: none;">
+    <div id="registration-form" style="display: none;">
         <h2>Register</h2>
-        <form id="register-form">
+        <form id="register-form" method="post" action="/register">
             <div>
                 <label for="register-username">Username:</label>
-                <input type="text" id="id" name="id" required>
+                <input type="text" id="registerid" name="registerid" required>
             </div>
             <div>
                 <label for="register-password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="registerpassword" name="registerpassword" required>
             </div>
             <div>
-                <button type="submit" id="register-button" value="Register">Register</button>
+                <button type="submit" id="register-button">Register</button>
             </div>
         </form>
         <p>Already have an account? <a href="#" id="show-login-form">Login</a></p>
@@ -29,11 +29,11 @@
         <form id="login-form" method="post" action="/login">
             <div>
                 <label for="login-username">Username:</label>
-                <input type="text" id="id" name="id" required>
+                <input type="text" id="loginid" name="loginid" required>
             </div>
             <div>
                 <label for="login-password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="loginpassword" name="loginpassword" required>
             </div>
             <div>
                 <button type="submit" id="login-button" value="Login">Login</button>

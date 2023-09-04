@@ -6,7 +6,6 @@ export const salt =async()=>{
 }
 
 export const hashing = async(password, salt)=>{
-    let newPassword= password.toString();
-    const hash = await bcrypt.hash(newPassword, parseInt(salt));
+    const hash = await bcrypt.hash(password, parseInt(salt));
     return hash;
 }
