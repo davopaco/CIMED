@@ -46,12 +46,12 @@
                 <img src="../images/logo.png" class="img" onclick="redirectInit()">
                 <h2>Bienvenido</h2>
                 <p>Señor usuario se le informa que todos los datos serán validados</p>
-                <input type="submit" value="Registrarse" id="sign-up2">
+                <input type="submit" value="Registrarse" id="sign-up2" form="registration-form">
             </div>
         </div>
         <div class="form-information">
             <div class="form-information-childs">
-                <form class="form" method="post" action="/register">
+                <form class="form" method="post" action="/register" id="registration-form">
                     <label>
                         <i class='bx bx-captions'></i>
                         <input type="text" placeholder="Cedula" id="cedulaR" name="cedulaR" required>
@@ -122,7 +122,6 @@
                         <i class='bx bxs-image-add'></i>
                         <input type="file" placeholder="Imagen perfil" style="color: #7a7a9a;">
                     </label>
-                    
                 </form>
             </div>
         </div>

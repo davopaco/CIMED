@@ -5,16 +5,16 @@ import bcrypt from 'bcrypt';
 import { hashing, salt } from '../hashing.js';
 
 export const loginUser = async (req, res) => {
-    const {id, password} = req.body;
-    const [rows] = await pool.query('SELECT * FROM PACIENTE WHERE ID=?', [id]);
+    const {cedulaL, claveL} = req.body;
+    const [rows] = await pool.query('SELECT * FROM PACIENTE WHERE ID=?', [cedulaL]);
 
     if(rows.length<=0) return res.status(404).json({
-        message: "No existe ese paciente"
+        message: "No existe ese paciente!"
     });
 
-    const [rows1] = await pool.query('SELECT hash, salt FROM PACIENTE WHERE id=?', [id]);
+    const [rows1] = await pool.query('SELECT hash FROM PACIENTE WHERE id=?', [cedulaL]);
 
-    const isPasswordCorrect = await bcrypt.compare(password, rows1[0].hash)
+    const isPasswordCorrect = await bcrypt.compare(claveL, rows1[0].hash)
 
     if(!isPasswordCorrect) return res.status(401).json({message: "La contraseña no es correcta!"});
 
@@ -72,7 +72,5 @@ export const registerUser = async (req, res) => {
 export const defaultR = (req, res)=>{
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
-    res.sendFile(path.join(__dirname,'..','..','Js', 'index.js'));
-    res.sendFile(path.join(__dirname,'..','..','Js', 'login.js'));
-    res.sendFile(path.join(__dirname,'..','..','HTML', 'Login.html'));
+    res.sendFile(path.join(__dirname,'..','..','public', 'html', 'Login.html'));
 }
