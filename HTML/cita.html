@@ -33,12 +33,12 @@
                     </label>
                     <label>
                         <i class='bx bx-user' ></i>
-                        <input type="text" placeholder="Nombre:">
+                        <input type="text" id="nombre" name="nombre" required placeholder="Nombre:">
                     </label>
-                    <label>
+                    <label for="especialidad">
                         <i class='bx bx-plus-medical'></i>
                         <input placeholder="Seleccione Especialidad: ">
-                        <select name="menu">
+                        <select id="especialidad" name="Especialidad">
                             <option value="0">...</option>
                             <option value="1">Nutrición</option>
                             <option value="2">Ortopedia</option>
@@ -55,26 +55,29 @@
                             <option value="13">Vacunación</option>
                             <option value="14">Geriátrico</option>
                         </select>
-                    </label>
-                    
+                    </label>                    
                     <label style="color: #7a7a9a" >Fecha:
-                        <input type="date" style="color: #7a7a9a;">
+                        <input type="date" style="color: #7a7a9a;" id="fecha" name="fecha" required>
                     </label>
                     <label>
                         <i class='bx bx-time-five' ></i>
                         <input placeholder="Hora">
                         <input type="time" placeholder="Hora:">
                     </label>
-                    <label>
+                    <label for="doctor">
                         <i class='bx bx-user' ></i>
                         <input type="text" placeholder="Doctor:">
+                        <select id="doctor" name="doctor" disabled>
+                            <option value="">Seleccione una especialidad primero</option>
+                            <!-- Los doctores disponibles se cargarán aquí después de seleccionar una especialidad -->
+                        </select>
                     </label>
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="/Js/login.js"></script>
+    <script src="/Js/Citas.js"></script>
     <script>
         const especialidadSelect = document.getElementById("especialidad");
         const doctorSelect = document.getElementById("doctor");
