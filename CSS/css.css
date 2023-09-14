@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .main {
@@ -40,10 +41,37 @@ video{
     border-radius: 10px;
 }
 
-.consorcio{
-    width: 100%;
-    height: 500px;
-    background-color: aquamarine;
+.consorcio{   
+    height: 400px;
+}
+.consorcioUl{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Consorcio li{
+    display: inline-block;
+}
+
+.Consorcio li img{
+    height: 250px;
+    width: 250px;
+    background-color: #f8f8f8;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: #9191bd;
+    transition: background-color 0.3s ease-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+}
+
+.Consorcio li img:hover{
+    background-color: #c7c7f3;
+    color: #fff;
 }
 
 .header{
@@ -90,7 +118,7 @@ video{
 }
 .card .front {
     transform: perspective(600px) rotateY(0deg);
-    box-shadow:  2px 5px 5px #09347f;
+    box-shadow:  2px 5px 5px #9191bd;
 }
 
 .card .front img{
@@ -113,14 +141,14 @@ video{
 
 .card .back {
     transform: perspective(600px) rotateY(180deg);
-    background: rgb(3, 35, 54);
+    background: #9191bd;
     padding: 15px;
     color: #f3f3f3;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    box-shadow:  0 5px 10px #09347f;
+    box-shadow:  0 5px 10px #7a7a9a;
 }
 
 .card .back .link{
@@ -168,7 +196,7 @@ video{
 .nosotros img {
     width: 100%;
     border-radius: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,.1); 
 }
 
 .Btn1{
