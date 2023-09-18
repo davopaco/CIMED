@@ -10,11 +10,12 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-background: linear-gradient(
-    45deg,
-    rgba(66, 183, 245, 0.8) 0%,
-    rgba(66, 245, 189, 0.4) 100%
-);
+    background-image: url(/Img/receta.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    background-attachment: fixed;
 
 }
 
@@ -186,25 +187,6 @@ background: linear-gradient(
     background-color: #7a7a9a;
 }
 
-.registro{
-    height: 800px;
-    max-width: 900px;
-    display: flex;
-    border-radius: 20px;
-    box-shadow: 0 5px 7px rgba(0,0,0,.1);
-    transition: all 1s ease;
-    margin: 10px;
-}
-
-.hide{
-    position: absolute;
-    transform: translateY(-300%);
-}
-
-.hide1{
-    position: absolute;
-    transform: translateY(-300%);
-}
 
 /*Responsive*/
 @media screen and (max-width:750px) {
