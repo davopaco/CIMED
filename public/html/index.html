@@ -6,26 +6,27 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>CIMED</title>
-    <link rel="shortcut icon" href="/icon/favicon.png">
-    <link rel="stylesheet" href="/CSS/css.css">
+    <link rel="shortcut icon" href="../icon/favicon.png">
+    <link rel="stylesheet" href="../stylesheets/css.css">
     
 </head>
 <body>
     <header> 
       <div class="header">
         <div class="">
-          <a href="#"><img id="img_logo" src="/Img/logo_head.jpg" alt="cargando"></a>
+          <a href="#"><img id="img_logo" src="../images/logo_head.jpg" alt="cargando"></a>
+          <a name = "Inicio"></a>
         </div>
-        <div class="">
+        <div class="IconH">
           <ul class="social">
-            <li><a href="https://www.facebook.com"></a><img src="/icon/facebook1.png" style="width: 45px;
-              height: 45px;"></li>
-            <li><a href="https://www.whatsapp.com"></a><img src="/icon/whatsapp.png" style="width: 45px;
-              height: 45px;"></li>
-            <li><a href="https://www.instagram.com"></a><img src="/icon/instagram.png" style="width: 45px;
-              height: 45px;"></li>
-            <li><a href="#"></a><img src="/icon/entrar (1).png" style="width: 45px;
-              height: 45px;"></li>
+            <li><img src="../icon/facebook1.png" style="width: 45px;
+              height: 45px;" onclick="redirectFacebook()"></li>
+            <li><img src="../icon/whatsapp.png" style="width: 45px;
+              height: 45px;" onclick="redirectWatsapp()"></li>
+            <li></a><img src="../icon/instagram.png" style="width: 45px;
+              height: 45px;" onclick="redirectInstagram()"></li>
+            <li><img src="../icon/entrar (1).png" style="width: 45px;
+              height: 45px;" onclick="redirectLogin()"></li>
           </ul>
         </div> 
       </div>
@@ -112,6 +113,10 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Solicitar Cita</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="Contacto.html">Contáctenos</a>
+            </li>
+            
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
@@ -133,24 +138,30 @@
                     </div>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <video src="/Vid/cirugia.mp4" autoplay ></video>
+                        <video src="../Vid/cirugia.mp4" autoplay ></video>
                         <div class="carousel-caption d-none d-md-block">
-                          <h3>Especialistas en Cirugías</h3>
+                          <div class="cardCarusel">
+                            <h3>Especialistas en Cirugías</h3>
                           <p>Donde la precisión se une con el cuidado para crear resultados transformadores.</p>
+                          </div>
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <video src="/Vid/compañeros.mp4" autoplay></video>
-                        <div class="carousel-caption d-none d-md-block" style=" color: rgb(0, 48, 85); width: 30%; height: 150px;">
-                          <h3>Unión Médica</h3>
-                          <p style="color: rgb(0, 48, 85);">Uniendo manos expertas, corazones compasivos y tecnología avanzada para brindarte el mejor cuidado</p>
+                        <video src="../Vid/compañeros.mp4" autoplay></video>
+                        <div class="carousel-caption d-none d-md-block" >
+                          <div class="cardCarusel">
+                            <h3>Unión Médica</h3>
+                          <p>Uniendo manos expertas, corazones compasivos y tecnología avanzada para brindarte el mejor cuidado</p>
+                          </div>  
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <video src="/Vid/tecnologia.mp4" autoplay></video>
+                        <video src="../Vid/tecnologia.mp4" autoplay></video>
                         <div class="carousel-caption d-none d-md-block">
-                          <h3>Tecnología</h3>
+                          <div class="cardCarusel">
+                            <h3>Tecnología</h3>
                           <p>Navegando el camino hacia la curación con tecnología innovadora y el compañerismo médico que mereces.</p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -180,7 +191,7 @@
       <div class="main">
         <div class="card">
           <div class="face front">
-            <img src="/Img/nutricion1.jpg" alt="">
+            <img src="../images/nutricion1.jpg" alt="">
             <a name = "Nutrición y Dietética"></a>
             <h3>Nutrición y Dietética</h3>
           </div>
@@ -194,7 +205,7 @@
         </div>
         <div class="card">
           <div class="face front">
-            <img src="/Img/ortopedia1.jpg" alt="">
+            <img src="../images/ortopedia1.jpg" alt="">
             <a name = "Ortopedia"></a>
             <h3>Ortopedia</h3>
           </div>
@@ -208,7 +219,7 @@
         </div>
         <div class="card">
           <div class="face front">
-            <img src="/Img/cardiologia2.jpg" alt="">
+            <img src="../images/cardiologia2.jpg" alt="">
             <a name = "Cardiología"></a>
             <h3>Cardiología</h3>
           </div>
@@ -224,7 +235,7 @@
       <div class="main" style="background-color: #d9ffff;">
         <div class="card">
           <div class="face front">
-            <img src="/Img/dermatologia1.jpg" alt="">
+            <img src="../images/dermatologia1.jpg" alt="">
             <a name = "Dermatología"></a>
             <h3>Dermatología</h3>
           </div>
@@ -238,7 +249,7 @@
         </div>
         <div class="card">
           <div class="face front">
-            <img src="/Img/oncologia1.jpg" alt="">
+            <img src="../images/oncologia1.jpg" alt="">
             <a name = "Oncología"></a>
             <h3>Oncología</h3>
           </div>
@@ -252,7 +263,7 @@
         </div>
         <div class="card">
           <div class="face front">
-            <img src="/Img/podologia1.jpg" alt="">
+            <img src="../images/podologia1.jpg" alt="">
             <a name = "Podología"></a>
             <h3>Podología</h3>
           </div>
@@ -268,7 +279,7 @@
       <div class="main"style="background-color: #d9ffff;">
         <div class="card">
           <div class="face front">
-            <img src="/Img/neurologia1.jpg" alt="">
+            <img src="../images/neurologia1.jpg" alt="">
             <a name = "Neurología"></a>
             <h3>Neurología</h3>
           </div>
@@ -282,7 +293,7 @@
         </div>
         <div class="card">
           <div class="face front">
-            <img src="/Img/Gastroentrología.jpg" alt="">
+            <img src="../images/Gastroentrología.jpg" alt="">
             <a name = "Gastroentrología"></a>
             <h3>Gastroentrología</h3>
           </div>
@@ -296,7 +307,7 @@
         </div>
         <div class="card">
           <div class="face front">
-            <img src="/Img/medicina_interna.jpg" alt="">
+            <img src="../images/medicina_interna.jpg" alt="">
             <a name = "Medicina Interna"></a>
             <h3>Medicina Interna</h3>
           </div>
@@ -312,7 +323,7 @@
       <div class="main">
         <div class="card">
           <div class="face front">
-            <img src="/Img/Salud Bucal.jpg" alt="">
+            <img src="../images/Salud Bucal.jpg" alt="">
             <a name = "Salud Bucal"></a>
             <h3>Salud Bucal</h3>
           </div>
@@ -326,7 +337,7 @@
         </div>
         <div class="card">
           <div class="face front">
-            <img src="/Img/Urología.jpg" alt="">
+            <img src="../images/Urología.jpg" alt="">
             <a name = "Urología"></a>
             <h3>Urología</h3>
           </div>
@@ -340,7 +351,7 @@
         </div>
         <div class="card">
           <div class="face front">
-            <img src="/Img/Oftalmología.jpg" alt="">
+            <img src="../images/Oftalmología.jpg" alt="">
             <a name = "Oftalmología"></a>
             <h3>Oftalmología</h3>
           </div>
@@ -356,7 +367,7 @@
       <div class="main">
         <div class="card">
           <div class="face front">
-            <img src="/Img/Vacunación.jpg" alt="">
+            <img src="../images/Vacunación.jpg" alt="">
             <a name = "Vacunación"></a>
             <h3>Vacunación</h3>
           </div>
@@ -370,7 +381,7 @@
         </div>
         <div class="card">
           <div class="face front">
-            <img src="/Img/Geriátrico.jpg" alt="">
+            <img src="../images/Geriátrico.jpg" alt="">
             <a name = "Geriátrico"></a>
             <h3>Geriátrico</h3>
           </div>
@@ -388,7 +399,7 @@
     <hr>
     <br>
     <a name = "Nosotros"></a>
-    <div class="nosotros">
+    <div class="Nosotros">
     <h2>Nosotros</h2>
 
     </div>
@@ -408,8 +419,30 @@
     <h2>Clientes</h2>
       
     </div>
-        
-            
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!--footer-->
+    <div class="footer">
+      <div class="footer container-fluid" style=" height: 70px; margin-top: 60px; background: rgb(12, 43, 129); ">
+          <div class="row">
+              <div class="col">
+                  <ul class="nav justify-content-center" style="height: 60px; align-items: flex-end;">
+                      <li class="nav-item">
+                          <a class="nav-link active text-white" aria-current="page" href="#">Inico</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="#">Aviso Legal</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="#">Cookies</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="Contacto.html">Contacto</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+    <script src="../javascripts/index.js"></script>        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
