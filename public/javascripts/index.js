@@ -8,5 +8,5 @@ function redirectInstagram(){
     location.href = "https://www.instagram.com";
 }
 function redirectLogin(){
-    location.href = "Login.html";
+    location.href = "/user";
 }

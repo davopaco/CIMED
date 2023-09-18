@@ -1,6 +1,6 @@
+import {pool} from "../database.js"
 import path from 'path';
 import { fileURLToPath } from 'url';
-import {pool} from "../database.js"
 
 export const postCitas = async (req,res) =>{
     const{hora,nombre,fecha_asig,medico} = req.body
@@ -30,6 +30,5 @@ export const getCitas = async (req, res) =>{
 export const defaultR = (req, res)=>{
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
-    res.sendFile(path.join(__dirname,'..','..','public', 'html', 'cita.html'));
+    res.sendFile(path.join(__dirname,'..','..','HTML', 'citas.html'));
 }
-
