@@ -20,6 +20,7 @@ export const loginUser = async (req, res) => {
 
     console.log("Login success");
     res.status(200).json({message: "Login success"});
+    res.sendFile(path.join(__dirname,'..','..','public', 'html', 'Login.html'));
 }
 
 export const registerUser = async (req, res) => {

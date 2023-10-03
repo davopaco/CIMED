@@ -33,12 +33,11 @@ export const postHistorial = async (req,res) =>{
         id_paciente,
         id_medico
     ]);
-    
 
-    const [recetas] = await pool.query("INSERT INTO RECETA_MEDICA (CODIGO_MEDICAMENTO, PROFESIONAL_SALUD_ID, HISTORIAL_CLINICO_ID, PACIENTE_ID) VALUES (?,?,?,?)", [fecha_form,
+    const [recetas] = await pool.query("INSERT INTO RECETA_MEDICA (ID, CODIGO_MEDICAMENTO, PROFESIONAL_SALUD_ID, HISTORIAL_CLINICO_ID, PACIENTE_ID) VALUES (?,?,?,?)", [fecha_form,
         pasado_med,
         sintomas,
-        historial_familiar
+        historial_clinico
     ]);
 
 }
