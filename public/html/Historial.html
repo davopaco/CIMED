@@ -12,7 +12,7 @@
         }
 
         section {
-            height: 500px;
+            max-height: 500px;
             max-width: 900px;
             margin: 20px;
             background-color: #fff;
@@ -23,6 +23,7 @@
             margin-right: 20px;
         }
 
+       
         label {
             display: block;
             margin-bottom: 8px;
@@ -53,44 +54,101 @@
 </head>
 
 <body>
+   
+        <section>
+            <h2> Identificación</h2>
+            <form action="#" method="post">
+                <label for="id_paciente">Cédula del Paciente:</label>
+                <textarea  id="id_paciente" name="id_paciente"  rows="1" required></textarea>
+            </form>
 
-    <section>
-        <h2>Consulta Médica</h2>
-        <form action="#" method="post">
-            <label style="color: #7a7a9a" >Fecha:
-                <input type="date" style="color: #7a7a9a;" id="fecha" name="fecha" required>
-            </label>
+            <form action="#" method="post">
+                <label for="id_doctor">Cédula del Doctor:</label>
+                <textarea  id="id_doctor" name="id_doctor"  rows="1" required></textarea>
+            </form>
+        </section>
 
-            <label for="sintomas">Síntomas:</label>
-            <textarea  id="sintomas" name="sintomas" rows="4" required></textarea>
+        <button type="submit">Generar historial clinico</button>
+        
+        <section>
+            <h2>Consulta Médica</h2>
+            <form action="#" method="post">
+                <label style="color: #7a7a9a" >Fecha:
+                    <input type="date" style="color: #7a7a9a;" id="fecha" name="fecha" required>
+             </label>
 
-            <label for="examen">Examen Físico:</label>
-            <textarea  id="examen" name="examen" rows="4" ></textarea>
+                <label for="sintomas">Síntomas:</label>
+                <textarea  id="sintomas" name="sintomas" rows="4" required></textarea>
 
-            <label for="resultados">Resultados Laboratorio:</label>
-            <textarea  id="resultados" name="resultados" rows="4" ></textarea>
+                <label for="examen">Examen Físico:</label>
+                <textarea  id="examen" name="examen" rows="4" ></textarea>
 
-        </form>
-    </section>
+                <label for="resultados">Resultados Laboratorio:</label>
+                <textarea  id="resultados" name="resultados" rows="4" ></textarea>
 
-    <section>
-        <h2>Antecedentes</h2>
-        <form action="#" method="post">
-            <label for="alergias">Alergias:</label>
-            <textarea  id="alergias" name="alergias" rows="2" ></textarea>
+            </form>
+        </section>
 
-            <label for="ante_med">Antecedentes Médicos:</label>
-            <textarea  id="ante_med" name="ante_med" rows="2" ></textarea>
+        <section>
+            <h2>Antecedentes</h2>
+            <form action="#" method="post">
+                <label for="alergias">Alergias:</label>
+                <textarea  id="alergias" name="alergias" rows="2" ></textarea>
 
-            <label for="ante_fam">Antecedentes Familiares:</label>
-            <textarea  id="ante_fam" name="ante_fam" rows="4" ></textarea>
+                <label for="ante_med">Antecedentes Médicos:</label>
+                <textarea  id="ante_med" name="ante_med" rows="2" ></textarea>
 
-            <label for="medicamentos">Medicamentos:</label>
-            <textarea  id="medicamentos" name="medicamentos" rows="4" ></textarea>
+                <label for="ante_fam">Antecedentes Familiares:</label>
+                <textarea  id="ante_fam" name="ante_fam" rows="4" ></textarea>
 
-        </form>
-    </section>
+                <label for="medicamentos">Medicamentos:</label>
+                <textarea  id="medicamentos" name="medicamentos" rows="4" ></textarea>
 
+            </form>
+        </section>
 
+        <section>
+            <form>
+                <h2>Receta Médica</h2>
+                <label for="medicamento"> Medicamento:</label> 
+                <select id="medicamento" name="medicamento" onchange="mostrarCodigo()">
+                        <option value="">Seleccione medicamento</option>
+                        <option value="1">Acetaminofén 500 mg</option>
+                        <option value="2">Acido Bórico 5 G</option>
+                        <option value="3">Acetato de Aluminio</option>
+                    
+                </select>
+                
+
+                
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo" readonly>
+
+            <button type="submit">Generar Receta Médica</button>
+
+            </form>
+
+            
+        </section>
+
+        
+
+        <script>
+            function mostrarCodigo() {
+
+                var medSelect = document.getElementById("medicamento").value;
+                var codigos = {
+                    "1": "INF123",
+                    "2": "MED456",
+                    "3": "ING789"
+                };
+
+                // Asignar el código correspondiente al campo de código
+                document.getElementById("codigo").value = codigos[medSelect] || "";
+            }
+        </script>
+
+   
+    
 </body>
 </html>
