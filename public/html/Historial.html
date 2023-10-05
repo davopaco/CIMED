@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Datos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        section {
+            height: 500px;
+            max-width: 900px;
+            margin: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            float: left;
+            margin-right: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <h2>Consulta Médica</h2>
+        <form action="#" method="post">
+            <label style="color: #7a7a9a" >Fecha:
+                <input type="date" style="color: #7a7a9a;" id="fecha" name="fecha" required>
+            </label>
+
+            <label for="sintomas">Síntomas:</label>
+            <textarea  id="sintomas" name="sintomas" rows="4" required></textarea>
+
+            <label for="examen">Examen Físico:</label>
+            <textarea  id="examen" name="examen" rows="4" ></textarea>
+
+            <label for="resultados">Resultados Laboratorio:</label>
+            <textarea  id="resultados" name="resultados" rows="4" ></textarea>
+
+        </form>
+    </section>
+
+    <section>
+        <h2>Antecedentes</h2>
+        <form action="#" method="post">
+            <label for="alergias">Alergias:</label>
+            <textarea  id="alergias" name="alergias" rows="2" ></textarea>
+
+            <label for="ante_med">Antecedentes Médicos:</label>
+            <textarea  id="ante_med" name="ante_med" rows="2" ></textarea>
+
+            <label for="ante_fam">Antecedentes Familiares:</label>
+            <textarea  id="ante_fam" name="ante_fam" rows="4" ></textarea>
+
+            <label for="medicamentos">Medicamentos:</label>
+            <textarea  id="medicamentos" name="medicamentos" rows="4" ></textarea>
+
+        </form>
+    </section>
+
+
+</body>
+</html>
