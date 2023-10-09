@@ -1,0 +1,80 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(/Img/receta.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.container-form{
+    max-height: 650px;
+    max-width: 1000px;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 5px 7px rgba(0,0,0,.1);
+    transition: all 1s ease;
+    margin: 10px;
+}
+
+
+section {
+    max-height: 600px;
+    width: 250px;
+    margin: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    float: left;
+    margin-right: 20px;
+}
+
+
+
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.information{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #c7eef3 ;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.info-childs{
+    width: 100%;
+    padding: 0 30px;
+}
