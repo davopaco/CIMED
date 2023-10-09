@@ -22,7 +22,7 @@ export const postHistorial = async (req,res) =>{
     const id_paciente = rows1[0].paciente_id
 
 
-    const [historiales] = await pool.query("INSERT INTO HISTORIAL_CLINICO (FECHA_FORM, PASADO_MED, SINTOMAS, HISTORIAL_FAMILIAR, HISTORIAL_MEDICACION, ALERGIAS, RESULTADOS, EXAMEN_FIS, PACIENTE_ID, PROFESIONAL_SALUD_ID) VALUES (?,?,?,?,?,?,?,?,?,?)", [fecha_form,
+    const [historiales] = await pool.query("INSERT INTO HISTORIAL_CLINICO (FECHA_FORM, PASADO_MED, SINTOMAS, HISTORIAL_FAMILIAR, HISTORIAL_MEDICACION, ALERGIAS, RESULTADOS_LAB, EXAMEN_FIS, PACIENTE_ID, PROFESIONAL_SALUD_ID) VALUES (?,?,?,?,?,?,?,?,?,?)", [fecha_form,
         pasado_med,
         sintomas,
         historial_familiar,

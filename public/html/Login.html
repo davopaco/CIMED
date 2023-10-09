@@ -51,7 +51,7 @@
         </div>
         <div class="form-information">
             <div class="form-information-childs">
-                <form class="form" method="post" action="/register" id="registration-form">
+                <form class="form" method="post" action="/register" id="registration-form" enctype="multipart/form-data">
                     <label>
                         <i class='bx bx-captions'></i>
                         <input type="text" placeholder="Cedula" id="cedulaR" name="cedulaR" required>
@@ -110,9 +110,9 @@
                         <input type="email" placeholder="Ingrese su Correo Electrónico" id="emailR" name="emailR" required>
                     </label>
                     <p style="color: #7a7a9a;">Sexo:
-                        <input type="radio" name="hm" value="f"> Femenino
-                        <input type="radio" name="hm" value="m"> Masculino
-                        <input type="radio" name="hm" value="i"> Intersex
+                        <input type="radio" name="sexoR" value="FEMENINO"> Femenino
+                        <input type="radio" name="sexoR" value="MASCULINO"> Masculino
+                        <input type="radio" name="sexoR" value="INTERSEXUALIDAD"> Intersex
                     </p>
                     <label>
                         <i class='bx bx-lock-alt' ></i>
@@ -120,7 +120,7 @@
                     </label>
                     <label>
                         <i class='bx bxs-image-add'></i>
-                        <input type="file" placeholder="Imagen perfil" style="color: #7a7a9a;">
+                        <input type="file" placeholder="Imagen perfil" style="color: #7a7a9a;" name="pfp" accept=".jpg .png .jpeg">
                     </label>
                 </form>
             </div>

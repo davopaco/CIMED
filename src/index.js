@@ -1,10 +1,15 @@
 import express from "express";
 import loginPacRoutes from "./routes/user.routes.js";
 import {PORT} from './config.js';
+import { fileURLToPath } from "url";
+import * as path from 'path';
 import bodyParser from 'body-parser';
 import homeRoutes from "./routes/home.routes.js"
 import citaRoutes from "./routes/citas.routes.js"
 import pacienteRoutes from "./routes/paciente.routes.js"
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
