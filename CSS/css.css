@@ -46,7 +46,7 @@ video{
     height: 700px;
     border-radius: 10px;
 }
-
+/* Espacio de aliados*/
 .consorcio{   
     height: 400px;
 }
@@ -105,6 +105,8 @@ video{
     height: 200px;
     padding: 30px;
 }
+
+/*Sevicios CIMED*/
 
 .card {
     position: relative;
@@ -184,6 +186,7 @@ video{
     transform: perspective(600px) rotateY(360deg);
 }
 
+/*Nosotros*/
 .Nosotros {
     display: flex;
     align-items: center;
@@ -219,38 +222,69 @@ video{
     background-color: #7a7a9a;
 }
 
-.Ubicacion {
-    width: 100%;
-    height: 340px;
+/*Ubicacion CIMED/Aliados */
+.container_ubicacion{
     display: flex;
     align-items: center;
     justify-content: center;
-    
+}
+.Ubicacion {
+    position: relative;
+    width: 350px;
+    height: 340px;
+    margin: 20px;
 }
 
 .ubicacion {
 margin-top: 50px;
 }
 
-.ubicacion1{
-    width: 30%;
-    height: 300px;
+.Ubicacion .ubicacion1{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
     border-radius: 15px;
-    margin: 20px;
+    overflow: hidden;
+
+
 }
 
-.ubicacion1 img {
-    width: 100%;
-    border-radius: 15px;
+.Ubicacion .front{
+    transform: perspective(600px)rotateY(0deg);
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
 }
 
+.Ubicacion .front img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Ubicacion .front h3{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    color: #fff;
+    background-color: rgba(0,0,0,.4);
+    text-align: center;
+}
+
+.Ubicacion .front h3 a{
+    color: #f3f3f3;
+}
+
+
+/*Experiencias Clientes*/
 .Clientes {
     width: 100%;
     height: 500px;
     background-color: #d9ffff;
 }
 
+/*Footer*/
 .footer {
     height: 70px; 
     margin-top: 60px;
@@ -260,3 +294,4 @@ margin-top: 50px;
     rgba(66, 245, 189, 0.4) 100%
 );
 }
+

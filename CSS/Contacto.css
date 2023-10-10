@@ -64,3 +64,28 @@
 .container-form .btn-enviar:hover{
     background: rgb(33, 75, 190);
 }
+
+.Btn1{
+    background-color: #9191bd;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+}
+.Btn1[type="button"]:hover{
+    background-color: #7a7a9a;
+}
+
+.footer {
+    height: 70px; 
+    margin-top: 60px;
+    background: linear-gradient(
+    45deg,
+    rgba(66, 183, 245, 0.8) 0%,
+    rgba(66, 245, 189, 0.4) 100%
+);
+}
+

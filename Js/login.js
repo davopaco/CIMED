@@ -26,3 +26,10 @@ btnSignIn2 .addEventListener("click", e => {
 function redirectInit(){
     location.href = "index.html";
 }
+
+function redirectAgent_Cita(){
+    location.href = "cita.html";
+}
+function redirectModif_Datos_Usuario(){
+    location.href = "Formulario_Login.html";
+}
