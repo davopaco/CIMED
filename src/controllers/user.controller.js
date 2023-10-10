@@ -21,6 +21,8 @@ const storage = multer.diskStorage({
 export const upload = multer({ storage: storage });
 
 export const loginUser = async (req, res) => {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
     const {cedulaL, claveL} = req.body;
     const [rows] = await pool.query('SELECT * FROM PACIENTE WHERE ID=?', [cedulaL]);
 
@@ -36,7 +38,6 @@ export const loginUser = async (req, res) => {
 
     console.log("Login success");
     res.status(200).json({message: "Login success"});
-    res.sendFile(path.join(__dirname,'..','..','public', 'html', 'Login.html'));
 }
 
 export const registerUser = async (req, res) => {
