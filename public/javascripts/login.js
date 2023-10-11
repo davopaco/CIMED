@@ -24,5 +24,5 @@ btnSignIn2 .addEventListener("click", e => {
 
 //funcion para imagen logo en login redirija a pagina principal
 function redirectInit(){
-    location.href = "index.html";
+    location.href = "/";
 }

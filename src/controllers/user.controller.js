@@ -3,8 +3,26 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import bcrypt from 'bcrypt';
 import { hashing, salt } from '../hashing.js';
+import multer from 'multer';
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, '../pfp')
+    },
+    filename: function (req, file, cb) {
+        const cedula = req.body.cedulaR;
+        let extArray = file.mimetype.split("/");
+        let extension = extArray[extArray.length - 1];
+        req.customFileName = cedula.toString()+'.'+extension;
+        cb(null, req.customFileName);
+    }
+})
+
+export const upload = multer({ storage: storage });
 
 export const loginUser = async (req, res) => {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
     const {cedulaL, claveL} = req.body;
     const [rows] = await pool.query('SELECT * FROM PACIENTE WHERE ID=?', [cedulaL]);
 
@@ -37,6 +55,8 @@ export const registerUser = async (req, res) => {
         estadoCivR
     } = req.body;
 
+    const refPfp = req.customFileName;
+
     const [rows] = await pool.query("SELECT * FROM PACIENTE WHERE ID = ?",[cedulaR]);
     const saltGen=salt();
     const hashedPsword=hashing(claveR, saltGen);
@@ -45,7 +65,7 @@ export const registerUser = async (req, res) => {
         message: "El paciente ya existe. Intente nuevamente."
     });
 
-    const [rows1] = await pool.query("INSERT INTO PACIENTE VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)",[cedulaR, (await hashedPsword).toString(), sexoR, (await saltGen).toString(), nombreR, fechaR, lugarNacR, tipoSangR, emailR, direccionR, movilR, fijoR, estadoCivR]);
+    const [rows1] = await pool.query("INSERT INTO PACIENTE VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",[cedulaR, (await hashedPsword).toString(), sexoR, (await saltGen).toString(), nombreR, fechaR, lugarNacR, tipoSangR, emailR, direccionR, movilR, fijoR, estadoCivR, refPfp]);
     if(rows1.affectedRows>0) return res.status(200).json({
         message: "Usuario creado con exito!"
     });
