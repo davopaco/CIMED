@@ -13,6 +13,7 @@ export const postHistorial = async (req,res) =>{
         resultados,
         examen_fis,
         codigo_medicamento,
+        receta_med_bool
     } = req.body
     const id_cita = req.params.id_cita
 
@@ -34,11 +35,15 @@ export const postHistorial = async (req,res) =>{
         id_medico
     ]);
 
-    const [recetas] = await pool.query("INSERT INTO RECETA_MEDICA (ID, CODIGO_MEDICAMENTO, PROFESIONAL_SALUD_ID, HISTORIAL_CLINICO_ID, PACIENTE_ID) VALUES (?,?,?,?)", [fecha_form,
-        pasado_med,
-        sintomas,
-        historial_clinico
-    ]);
+    if(receta_med_bool==true){
+        const [recetas] = await pool.query("INSERT INTO RECETA_MEDICA (ID, CODIGO_MEDICAMENTO, PROFESIONAL_SALUD_ID, HISTORIAL_CLINICO_ID, PACIENTE_ID) VALUES (?,?,?,?,?)", [fecha_form,
+            pasado_med,
+            sintomas,
+            historial_clinico
+        ]);
+    }
+
+    res.redirect
 
 }
 
