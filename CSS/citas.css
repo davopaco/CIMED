@@ -55,6 +55,7 @@ body {
 }
 
 .img{
+    width: 170px;
     height: 150px;
     background-color: #f8f8f8;
     align-items: center;
