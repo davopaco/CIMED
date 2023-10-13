@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../stylesheets/citaAgen.css">
+    </head>
+    <body>
+        <div class="container-form">
+            <div class="information">
+                <div class="info-childs" id="cantidad_citas">
+                    <h2>Citas Programadas </h2>     
+                </div>
+            </div>
+            
+           
+          
+            <div class="form-information" id="info_citas">
+                <div class="form-information-childs">
+                    <form class="form" method="get">
+                            
+                    </form>
+                </div>
+
+            </div>
+          
+            
+            
+            
+        </div>
+
+
+        
+     
+    </body>
+
+    <script>
+        function redirectInit(){
+        location.href = "index.html";  
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const cantidadDeBotones = 5;
+      const buttonContainer = document.getElementById('cantidad_citas');
+      const infoContainer = document.getElementById('info_citas');
+      const nombreDoctor = "Dr Salas";
+
+      const hora = "9:00";
+      const dia= "15/10/2023";
+      const id = 1
+
+
+      function mostrarInformacion(numBoton) {
+        // Lógica para mostrar la información según el botón presionado
+        infoContainer.innerText = 'Hora: ' + hora + 'Dia: ' + dia + ' ' + nombreDoctor + "ID: " + id;
+      }
+
+      for (let i = 1; i <= cantidadDeBotones; i++) {
+        const button = document.createElement('button');
+        button.className = 'custom-button';
+        button.innerText = 'Cita ID ' + i +' ' + nombreDoctor;
+
+        // Agrega un evento de clic a cada botón
+        button.addEventListener('click', function () {
+          mostrarInformacion(i);
+        });
+
+        buttonContainer.appendChild(button);
+      }
+    });
+
+    
+
+   
+
+    </script>
+</html>
