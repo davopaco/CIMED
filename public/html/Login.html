@@ -145,7 +145,7 @@
                     <i class='bx bxl-linkedin'></i>
                 </div>
                 <p>Iniciar sesión con una cuenta</p>
-                <form class="form" method="post" action="/login">
+                <form class="form">
                     <label>
                         <i class='bx bx-user' ></i>
                         <input type="text" placeholder="Cedula" id="cedulaL" name="cedulaL">
@@ -155,6 +155,10 @@
                         <input type="password" placeholder="Ingrese Contraseña" id="claveL" name="claveL">
                     </label>
                     <input type="submit" value="Iniciar Sesión">
+                    <div id="alerta"> 
+                        Usuario incorrecto. Por favor intente de nuevo.
+                    </div>
+
                 </form>
             </div>
         </div>

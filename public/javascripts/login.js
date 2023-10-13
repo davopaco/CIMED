@@ -24,5 +24,15 @@ btnSignIn2 .addEventListener("click", e => {
 
 //funcion para imagen logo en login redirija a pagina principal
 function redirectInit(){
-    location.href = "/";
+    location.href = "index.html";
+}
+
+function redirectAgent_Cita(){
+    location.href = "cita.html";
+}
+function redirectModif_Datos_Usuario(){
+    location.href = "Formulario_Login.html";
+}
+function redirectAlianza_Doctor(){
+    location.href = "Alianza_consulta_Doctor.html";
 }

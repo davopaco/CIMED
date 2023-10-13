@@ -30,7 +30,24 @@ export const loginUser = async (req, res) => {
         message: "No existe ese paciente!"
     });
 
+    var cliente;
+    var validez_usuario = {
+        paciente : 0,
+        profesionalMed : 0,
+        logistica : 0
+    }
     const [rows1] = await pool.query('SELECT hash FROM PACIENTE WHERE id=?', [cedulaL]);
+    if(rows1 != 0){
+        validez_usuario.paciente=1;
+    }
+    const [rows2] = await pool.query('SELECT hash FROM PROFESIONAL_SALUD WHERE id=?', [cedulaL]);
+    if(rows1 != 0){
+        validez_usuario.paciente=2;
+    }
+    const [rows3] = await pool.query('SELECT hash FROM LOGISTICA WHERE id=?', [cedulaL]);
+    if(rows1 != 0){
+        validez_usuario.paciente=3;
+    }
 
     const isPasswordCorrect = await bcrypt.compare(claveL, rows1[0].hash)
 

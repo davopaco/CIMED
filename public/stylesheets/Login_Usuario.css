@@ -10,12 +10,11 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url(/public/images/receta.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center center;
-    background-attachment: fixed;
+background: linear-gradient(
+    45deg,
+    rgba(66, 183, 245, 0.8) 0%,
+    rgba(66, 245, 189, 0.4) 100%
+);
 
 }
 
@@ -35,8 +34,8 @@ body {
     align-items: center;
     text-align: center;
     background-color: #c7eef3 ;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .info-childs{
@@ -44,18 +43,14 @@ body {
     padding: 0 30px;
 }
 
-.info-childs h2{
+.info-childs h3{
     font-size: 2.5rem;
     color: #333;
 }
 
-.info-childs p{
-    margin: 15px;
-    color: #555;
-}
 
+/*Imagen principal CIMED resgistro/login*/
 .img{
-    width: 170px;
     height: 150px;
     background-color: #f8f8f8;
     align-items: center;
@@ -68,6 +63,7 @@ body {
     transition: background-color 0.3s ease-out;
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
 }
+
 
 .info-childs input{
     background-color: transparent;
@@ -91,11 +87,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60%;
+    width: 70%;
     text-align: center;
     background-color: #f8f8f8;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    
 }
 
 .form-information-childs{
@@ -112,80 +109,66 @@ body {
     color: #555;
 }
 
-.icons{
-    margin: 15px 0;
-}
 
-.icons i{
+
+.icons_Usuario i{
     border-radius: 50%;
-    padding: 15px;
+    padding: 50px;
     cursor: pointer;
     margin: 0 10px;
     color: #9191bd;
     transition: background-color 0.3s ease-out;
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
-}
-
-.icons i:hover{
-    background-color: #c7c7f3;
-    color: #fff;
+    background-color: #fff;
 }
 
 .form {
-    margin: 30px 0 0 0;
-}
-.form label {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    border-radius: 20px;
-    padding: 0 10px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1);  
+    justify-content: center;
+    margin: 15px;
 }
 
-.form label input{
-    width: 100%;
-    padding: 10px;
-    background-color: #fff;
-    border: none;
-    outline: none;
-    border-radius: 20px;
-    color: #333;
-}
-
-.form label i{
-    color: #a7a7a7;
-}
-
-.form input[type="submit"]{
-    background-color: #9191bd;
-    color: #fff;
-    border-radius: 20px;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-top: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1);  
-}
-
-.form input[type="submit"]:hover{
-    background-color: #7a7a9a;
+.Btn1[type="button"]{
+    white-space: normal;
+    font-size: 14px;
 }
 
 .Btn1{
+    width: 150px;
+    height: 80px;
     background-color: #9191bd;
     color: #fff;
     border-radius: 20px;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    margin-top: 10px;
+    margin: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
 }
 
 .Btn1[type="button"]:hover{
     background-color: #7a7a9a;
+}
+
+.icons_Usuario{
+    margin: 15px 0;
+}
+
+.icons_Usuario i{
+    border-radius: 50%;
+    padding: 50px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: #9191bd;
+    transition: background-color 0.3s ease-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    background-color: #fff;
+}
+
+.icons_Usuario i:hover{
+    background-color: #c7c7f3;
+    color: #fff;
 }
 
 
