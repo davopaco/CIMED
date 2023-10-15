@@ -13,17 +13,22 @@ export const getDatos = async (req, res) => {
 export const defaultR = async (req, res) => {
   console.log("Cargando página de paciente.");
   const cedulaL = req.params.id;
-  const [rows] = await pool.query("SELECT nombre FROM PACIENTE WHERE ID=?", [
-    cedulaL,
-  ]);
+  const [rows] = await pool.query(
+    "SELECT nombre, referencia_pfp FROM PACIENTE WHERE ID=?",
+    [cedulaL]
+  );
   const data = {
-    "nombre": rows[0].nombre,
+    nombre: rows[0].nombre,
+    refPfp: rows[0].referencia_pfp,
   };
+  console.log(data);
   res.render("Login_Usuario.ejs", { data });
 };
 
-export const getImagen = async (req, res) => {
+export const getImagen = (req, res, next) => {
+  console.log("Cargando imagen.");
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-  res.sendFile(path.join(__dirname, "..", "..", "pfp", req.params.id));
+  const fileName = path.join(__dirname, "..", "..", "pfp", req.query.refPfp);
+  res.download(fileName);
 };

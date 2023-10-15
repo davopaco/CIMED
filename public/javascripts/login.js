@@ -3,9 +3,9 @@ const btnSignIn = document.getElementById("sign-in"),
   btnSignUp2 = document.getElementById("sign-up2"),
   btnSignIn2 = document.getElementById("sign-in2"),
   formInicio = document.querySelector(".inicio"),
-  loginForm = document.getElementById("loginForm");
-(formRegistro = document.querySelector(".registro")),
-  (formLogin = document.querySelector(".login"));
+  loginForm = document.getElementById("loginForm"),
+  formRegistro = document.querySelector(".registro"),
+  formLogin = document.querySelector(".login");
 
 btnSignIn.addEventListener("click", (e) => {
   formInicio.classList.add("hide");
@@ -69,8 +69,13 @@ function redirectInit() {
 function redirectModif_Datos_Usuario() {
   location.href = "Formulario_Login.html";
 }
+
 function redirectAlianza_Doctor() {
   location.href = "Alianza_consulta_Doctor.html";
+}
+
+function redirectLogout() {
+  location.href = "/logout";
 }
 
 function whereTo(dataSend) {
