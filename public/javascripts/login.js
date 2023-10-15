@@ -71,7 +71,7 @@ function redirectAlianza_Doctor() {
 
 function whereTo(dataSend) {
   if (dataSend.page === 1) {
-    window.location.href = `/paciente/${dataSend.id}`;
+    window.location.href = `/paciente/${dataSend.id}?id=${dataSend.id}`;
   } else if (dataSend.page === 2) {
     window.location.href = `/medico/${dataSend.id}`;
   } else if (dataSend.page === 3) {
