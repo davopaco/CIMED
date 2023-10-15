@@ -75,9 +75,10 @@ registerForm.addEventListener("submit", async (e) => {
     if (response.status === 200) {
       const data = await response.json();
       console.log(data);
-      console.log("Usuario creado con éxito!");
-      window.location.href = "/user";
-    } else if (response.status === 401) {
+      if (!alert("Usuario creado con éxito!")) {
+        window.location.href = "/user";
+      }
+    } else if (response.status === 409) {
       alert(
         "El usuario ya existe. Por favor, verifica si la cédula es correcta."
       );
