@@ -4,6 +4,7 @@ const btnSignIn = document.getElementById("sign-in"),
   btnSignIn2 = document.getElementById("sign-in2"),
   formInicio = document.querySelector(".inicio"),
   loginForm = document.getElementById("loginForm"),
+  registerForm = document.getElementById("registration-form"),
   formRegistro = document.querySelector(".registro"),
   formLogin = document.querySelector(".login");
 
@@ -52,6 +53,33 @@ loginForm.addEventListener("submit", async (e) => {
     } else if (response.status === 409) {
       alert(
         "El usuario ya se encuentra autenticado. Si no eres tú, por favor contacta a la administración de CIMED."
+      );
+    } else {
+      console.error("Error: " + response.status);
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+});
+
+registerForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  var formElement = document.getElementById("registration-form");
+  const formData = new FormData(formElement);
+
+  try {
+    const response = await fetch("/register", {
+      method: "POST",
+      body: formData,
+    });
+    if (response.status === 200) {
+      const data = await response.json();
+      console.log(data);
+      console.log("Usuario creado con éxito!");
+      window.location.href = "/user";
+    } else if (response.status === 401) {
+      alert(
+        "El usuario ya existe. Por favor, verifica si la cédula es correcta."
       );
     } else {
       console.error("Error: " + response.status);
