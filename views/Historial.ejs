@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario de Datos</title>
+        <link rel="stylesheet" href="/stylesheets/historial.css">
+        
+</head>
+
+<body>
+    <div class="container-form historial ">
+
+        <div class="information">
+            <div class="info-childs">
+                <img src="/images/logo.png" class="img" onclick="redirectInit()">
+                <h2>Historial Clinico </h2>
+                <p>Complete el siguiente formulario con la información del paciente</p>
+                <button type="submit">Generar Historial</button> 
+            </div>
+        </div>
+
+        <section>
+            <h2>Consulta Médica</h2>
+            <form action="#" method="post">
+                <label style="color: #7a7a9a" >Fecha:
+                    <input type="date" style="color: #7a7a9a;" id="fecha" name="fecha" required>
+                </label>
+
+                 <label for="sintomas">Síntomas:</label>
+                <textarea  id="sintomas" name="sintomas" rows="4" required></textarea>
+
+                <label for="examen">Examen Físico:</label>
+                <textarea  id="examen" name="examen" rows="4" ></textarea>
+
+                <label for="resultados">Resultados Laboratorio:</label>
+                <textarea  id="resultados" name="resultados" rows="4" ></textarea>
+
+            </form>
+
+        </section>    
+            
+            
+        <section>
+            <h2>Antecedentes</h2>
+            <form action="#" method="post">
+                <label for="alergias">Alergias:</label>
+                <textarea  id="alergias" name="alergias" rows="2" ></textarea>
+    
+                <label for="ante_med">Antecedentes Médicos:</label>
+                <textarea  id="ante_med" name="ante_med" rows="2" ></textarea>
+    
+                <label for="ante_fam">Antecedentes Familiares:</label>
+                <textarea  id="ante_fam" name="ante_fam" rows="4" ></textarea>
+    
+                <label for="medicamentos">Medicamentos:</label>
+                <textarea  id="medicamentos" name="medicamentos" rows="4" ></textarea>
+    
+            </form>
+            <button onclick="mostrarreceta()">Generar Receta Médica</button>
+        </section>
+        
+        <div id="form_receta" style="display: none;">
+            <section>
+                <form>
+                    <h2>Receta Médica</h2>
+                    <label for="medicamento"> Medicamento:</label> 
+                    <select id="medicamento" name="medicamento" onchange="mostrarCodigo()">
+                        <option value="">Seleccione medicamento</option>
+                        <option value="1">Acetaminofén 500 mg</option>
+                        <option value="2">Acido Bórico 5 G</option>
+                        <option value="3">Acetato de Aluminio</option>        
+                    </select>
+                        
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" name="codigo" readonly>
+        
+                    
+        
+                </form>
+        
+                    
+            </section>
+        
+        </div>
+       
+      
+       
+    </div>
+
+        
+    <script>
+        function mostrarCodigo() {
+
+            var medSelect = document.getElementById("medicamento").value;
+            var codigos = {
+                "1": "INF123",
+                "2": "MED456",
+                "3": "ING789"
+            };
+            document.getElementById("codigo").value = codigos[medSelect] || "";
+        }
+    </script>
+
+<script>
+    function mostrarreceta() {
+        var formulario = document.getElementById("form_receta");
+        formulario.style.display = "block";
+    }
+</script>        
+</body>
+</html>
