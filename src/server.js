@@ -10,7 +10,6 @@ import pacienteRoutes from "./routes/paciente.routes.js";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import cambioUsuarioRoutes from "./routes/cambioUsuario.routes.js";
-import ejs from "ejs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,6 +33,8 @@ app.use(
     },
   })
 );
+
+export var sessions = [];
 
 app.use(homeRoutes);
 app.use(loginPacRoutes);

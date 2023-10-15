@@ -49,6 +49,10 @@ loginForm.addEventListener("submit", async (e) => {
       alert("La contraseña es incorrecta.");
     } else if (response.status === 404) {
       alert("El usuario no existe.");
+    } else if (response.status === 409) {
+      alert(
+        "El usuario ya se encuentra autenticado. Si no eres tú, por favor contacta a la administración de CIMED."
+      );
     } else {
       console.error("Error: " + response.status);
     }

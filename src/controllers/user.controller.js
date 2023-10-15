@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import bcrypt from "bcrypt";
 import { hashing, salt } from "../hashing.js";
 import multer from "multer";
+import { sessions } from "../server.js";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -64,7 +65,12 @@ export const loginUser = async (req, res, next) => {
   if (!isPasswordCorrect)
     return res.status(401).json({ message: "La contraseña no es correcta!" });
 
-  req.session.profile = { username: cedulaL};
+  if (sessions.includes(cedulaL)) {
+    return res.status(409).json({ message: "Ya estas logueado!" });
+  }
+  sessions.push(cedulaL);
+  req.session.profile = { username: cedulaL };
+  console.log(req.session);
   req.dataValid = data;
   next();
 };
