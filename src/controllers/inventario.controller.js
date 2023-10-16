@@ -36,7 +36,7 @@ export const getProducto = async (req, res) => {
   );
   res.render("productos", {productos});
   //res.json(productos[0]);
-
+//hola
 
 };
 export const defaultR = async(req, res) => {
