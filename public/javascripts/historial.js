@@ -51,7 +51,7 @@ btnHistorial.addEventListener("click", async (e) => {
   const jsonData = JSON.stringify(formDataObject);
   console.log(jsonData);
   try {
-    const response = await fetch("/historial/agregar", {
+    const response = await fetch(`/historial/agregar?id=${id}`, {
       method: "POST",
       body: jsonData,
       headers: {
