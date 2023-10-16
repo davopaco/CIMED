@@ -115,6 +115,6 @@ function whereTo(dataSend) {
   } else if (dataSend.page === 4) {
     window.location.href = `/logistica/${dataSend.id}?id=${dataSend.id}`;
   } else {
-    window.location.href = `/cambioUsuario/id=${dataSend.id}page=${dataSend.page}`;
+    window.location.href = `/cambioUsuario?id=${dataSend.id}&page=${dataSend.page}`;
   }
 }

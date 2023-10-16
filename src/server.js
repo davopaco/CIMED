@@ -10,6 +10,8 @@ import pacienteRoutes from "./routes/paciente.routes.js";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import cambioUsuarioRoutes from "./routes/cambioUsuario.routes.js";
+import logisticaRoutes from "./routes/logistica.routes.js";
+import medicoRoutes from "./routes/medico.routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,6 +43,8 @@ app.use(loginPacRoutes);
 app.use(citaRoutes);
 app.use(pacienteRoutes);
 app.use(cambioUsuarioRoutes);
+app.use(logisticaRoutes);
+app.use(medicoRoutes);
 
 app.use((req, res) => {
   res.status(404).json({

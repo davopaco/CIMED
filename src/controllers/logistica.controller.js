@@ -2,19 +2,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { pool } from "../database.js";
 
-export const getDatos = async (req, res) => {
-  const [rows] = await pool.query(
-    "Select nombre, id , tipo_sangre, telefono_movil, email, direccion from paciente where id= ?",
-    [req.params.id_paciente]
-  );
-  res.json(rows);
-};
-
 export const defaultR = async (req, res) => {
-  console.log("Cargando página de paciente.");
+  console.log("Cargando página de logística.");
   const cedulaL = req.params.id;
   const [rows] = await pool.query(
-    "SELECT nombre, referencia_pfp FROM PACIENTE WHERE ID=?",
+    "SELECT nombre, referencia_pfp FROM LOGISTICA WHERE ID=?",
     [cedulaL]
   );
   const data = {
@@ -22,10 +14,10 @@ export const defaultR = async (req, res) => {
     refPfp: rows[0].referencia_pfp,
   };
   console.log(data);
-  res.render("Login_Usuario.ejs", { data });
+  res.render("Login_Logistica.ejs", { data });
 };
 
-export const getImagen = (req, res, next) => {
+export const getImagen = (req, res) => {
   console.log("Cargando imagen.");
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);

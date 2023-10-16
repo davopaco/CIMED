@@ -17,7 +17,7 @@
     <div class="container-form inicio">
         <div class="form-information">
             <div class="form-information-childs">
-                <h3>Buen día,[Nombre Usuario]</h3>
+                <h3>Buen día, <%=data.nombre%></h3>
                 <form class="form">
                     <input type="button" value="Crear Historico de Paciente" id="sign-in2" class="Btn1" onclick="">
                     <input type="button" value="Modificar Datos del Usuario" id="sign-in2" class="Btn1" onclick="redirectModif_Datos_Usuario()">
@@ -33,7 +33,7 @@
         <div class="information">
             <div class="info-childs">
                 <div class="icons_Usuario">
-                    <i class='bx bx-image-add'onclick="#" ></i>
+                    <img src="/imagenPerfil?refPfp=<%= data.refPfp %>">
                 </div>
                 <br>
                 <br>
