@@ -16,11 +16,3 @@ export const defaultR = async (req, res) => {
   console.log(data);
   res.render("Login_Logistica.ejs", { data });
 };
-
-export const getImagen = (req, res) => {
-  console.log("Cargando imagen.");
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-  const fileName = path.join(__dirname, "..", "..", "pfp", req.query.refPfp);
-  res.sendFile(fileName);
-};

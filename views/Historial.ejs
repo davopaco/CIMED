@@ -103,6 +103,10 @@
     </script>
 
 <script>
+    btnSignIn.addEventListener("click", (e) => {
+            formInicio.classList.add("hide");
+            formLogin.classList.remove("hide");
+        });
     function mostrarreceta() {
         var formulario = document.getElementById("form_receta");
         formulario.style.display = "block";

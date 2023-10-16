@@ -16,3 +16,5 @@ export const defaultR = async (req, res) => {
   console.log(data);
   res.render("Login_Doctor.ejs", { data });
 };
+
+export const agregarHistorial = async (req, res) => {};

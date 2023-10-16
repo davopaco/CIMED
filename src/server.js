@@ -12,6 +12,7 @@ import session from "express-session";
 import cambioUsuarioRoutes from "./routes/cambioUsuario.routes.js";
 import logisticaRoutes from "./routes/logistica.routes.js";
 import medicoRoutes from "./routes/medico.routes.js";
+import historialRoutes from "./routes/historial.routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,6 +46,7 @@ app.use(pacienteRoutes);
 app.use(cambioUsuarioRoutes);
 app.use(logisticaRoutes);
 app.use(medicoRoutes);
+app.use(historialRoutes);
 
 app.use((req, res) => {
   res.status(404).json({

@@ -95,10 +95,6 @@ function redirectInit() {
   location.href = "/";
 }
 
-function redirectModif_Datos_Usuario() {
-  location.href = "Formulario_Login.html";
-}
-
 function redirectAlianza_Doctor() {
   location.href = "Alianza_consulta_Doctor.html";
 }
