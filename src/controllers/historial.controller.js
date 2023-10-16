@@ -1,3 +1,4 @@
+import { error } from "console";
 import { pool } from "../database.js";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -14,6 +15,7 @@ export const agregarHistorial = async (req, res) => {
     medic_ant,
     paciente,
     receta_medica,
+    codigo,
   } = req.body;
   console.log(req.body);
   const id_cita = paciente;
@@ -24,7 +26,7 @@ export const agregarHistorial = async (req, res) => {
   console.log(rows);
   const id_medico = rows[0].id_medico;
   const id_paciente = rows[0].paciente_id;
-
+  var lastInsertedID;
   const [historiales] = await pool.query(
     "INSERT INTO HISTORIAL_CLINICO (FECHA_FORM, PASADO_MED, SINTOMAS, HISTORIAL_FAMILIAR, HISTORIAL_MEDICACION, ALERGIAS, RESULTADOS_LAB, EXAMEN_FIS, PACIENTE_ID, PROFESIONAL_SALUD_ID) VALUES (?,?,?,?,?,?,?,?,?,?)",
     [
@@ -41,11 +43,13 @@ export const agregarHistorial = async (req, res) => {
     ]
   );
 
+  lastInsertedID = historiales.insertId;
+
   var recetas;
   if (receta_medica == true) {
     [recetas] = await pool.query(
-      "INSERT INTO RECETA_MEDICA (CODIGO_MEDICAMENTO, PROFESIONAL_SALUD_ID, HISTORIAL_CLINICO_ID, PACIENTE_ID) VALUES (?,?,?,?,?)",
-      [fecha_form, pasado_med, sintomas, historial_clinico]
+      "INSERT INTO RECETA_MEDICA (CODIGO_MEDICAMENTO, PROFESIONAL_SALUD_ID, HISTORIAL_CLINICO_ID, ID_PACIENTE) VALUES (?,?,?,?)",
+      [codigo, id_medico, lastInsertedID, id_paciente]
     );
   }
 

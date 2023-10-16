@@ -30,10 +30,6 @@ app.use(
       "YNJRhIywZCsjP2QDtFEfKqDleQ8tVMH6j6Le3T5KAL69IKkaa07yEPf+FDQ7s8bDRFd/R9hOXSjW36eYM0s1froKuwNF9eGXCg1+W/3vIIKBrKMiDY5Fi739s9jEDomx08kr10B1ihC0ngkJYcLHDhbAZ4fsGvl8CoBLuLFyYao=",
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      secure: false,
-      expires: 60 * 60 * 24,
-    },
   })
 );
 
