@@ -111,9 +111,9 @@ function whereTo(dataSend) {
   if (dataSend.page === 1) {
     window.location.href = `/paciente/${dataSend.id}?id=${dataSend.id}`;
   } else if (dataSend.page === 2) {
-    window.location.href = `/medico/${dataSend.id}`;
-  } else if (dataSend.page === 3) {
-    window.location.href = `/logistica/${dataSend.id}`;
+    window.location.href = `/medico/${dataSend.id}?id=${dataSend.id}`;
+  } else if (dataSend.page === 4) {
+    window.location.href = `/logistica/${dataSend.id}?id=${dataSend.id}`;
   } else {
     window.location.href = `/cambioUsuario/id=${dataSend.id}page=${dataSend.page}`;
   }
