@@ -15,11 +15,13 @@ export const agregarHistorial = async (req, res) => {
     paciente,
     receta_medica,
   } = req.body;
+  console.log(req.body);
   const id_cita = paciente;
   const [rows] = await pool.query(
     "SELECT id_medico, paciente_id FROM CITA WHERE ID =?",
     [id_cita]
   );
+  console.log(rows);
   const id_medico = rows[0].id_medico;
   const id_paciente = rows[0].paciente_id;
 

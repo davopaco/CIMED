@@ -10,7 +10,7 @@ genRec.addEventListener("click", (e) => {
   }
 });
 
-btnHistorial.addEventListener("submit", async (e) => {
+btnHistorial.addEventListener("click", async (e) => {
   console.log("El historial se está generando.");
   var receta_med_bool = false;
   if (formulario.style.display == "block") {
@@ -20,9 +20,14 @@ btnHistorial.addEventListener("submit", async (e) => {
   var formElement = document.getElementById("consulta-medica");
   var formElement2 = document.getElementById("antecedentes");
   var formElement3 = document.getElementById("receta-medica");
+  var formElement4 = document.getElementById("cita-form");
   const formData = new FormData(formElement);
   const formData2 = new FormData(formElement2);
-  const formData3 = new FormData(formElement3);
+  var formData3;
+  const formData4 = new FormData(formElement4);
+  if (receta_med_bool) {
+    formData3 = new FormData(formElement3);
+  }
   const formDataObject = {};
   formDataObject["receta_medica"] = receta_med_bool;
   formData.forEach((value, key) => {
@@ -33,7 +38,13 @@ btnHistorial.addEventListener("submit", async (e) => {
     formDataObject[key] = value;
   });
 
-  formData3.forEach((value, key) => {
+  if (receta_med_bool) {
+    formData3.forEach((value, key) => {
+      formDataObject[key] = value;
+    });
+  }
+
+  formData4.forEach((value, key) => {
     formDataObject[key] = value;
   });
 

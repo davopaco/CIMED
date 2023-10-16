@@ -18,15 +18,17 @@
                 <p>Complete el siguiente formulario con la información del paciente</p>
                 <h3>Seleccione el paciente</h3>
                 <h2><% data[0].nombre %></h2>
-                <select id="paciente" name="paciente">
-                    <option value="">Seleccione el paciente.</option>
-                    <% if (data) {%>
-                        <% for (var i =0; i< data.length; i++) {%>
-                            <option value="<%= data[i].id %>"><%= data[i].nombre %> | <%= data[i].fecha_asig %></option>
+                <form id="cita-form">
+                    <select id="paciente" name="paciente">
+                        <option value="">Seleccione el paciente.</option>
+                        <% if (data) {%>
+                            <% for (var i =0; i< data.length; i++) {%>
+                                <option value="<%= data[i].id %>"><%= data[i].nombre %> | <%= data[i].fecha_asig %></option>
+                            <% } %>
                         <% } %>
-                    <% } %>
-                </select>
-                <button type="submit" id="gen-hist">Generar Historial</button>
+                    </select>
+                </form>
+                <button type="button" id="gen-hist">Generar Historial</button>
                 
             </div>
         </div>
@@ -64,7 +66,7 @@
                 <label for="ante_fam">Antecedentes Familiares:</label>
                 <textarea  id="ante_fam" name="ante_fam" rows="4" ></textarea>
     
-                <label for="medicamentos">Medicamentos:</label>
+                <label for="medic_ant">Medicamentos:</label>
                 <textarea  id="medic_ant" name="medicamentos" rows="4" ></textarea>
     
             </form>
