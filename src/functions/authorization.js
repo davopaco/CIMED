@@ -11,17 +11,6 @@ export function sessionChecker(req, res, next) {
   }
 }
 
-export function sessionCheckerPost(req, res, next) {
-  console.log("Autenticando POST");
-  if (req.session.profile) {
-    if (req.session.profile.username === req.query.id) {
-      next();
-    }
-  } else {
-    res.redirect("/user");
-  }
-}
-
 export function logoutSession(req, res, next) {
   const index = sessions.indexOf(req.session.profile.username);
   sessions.splice(index, 1);

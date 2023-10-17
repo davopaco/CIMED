@@ -17,4 +17,14 @@ export const defaultR = async (req, res) => {
   res.render("Login_Doctor.ejs", { data });
 };
 
+export const modificarDatos = async (req, res) => {
+  const cedula = req.params.id;
+  const [rows] = await pool.query(
+    "SELECT * FROM PROFESIONAL_SALUD WHERE ID=?",
+    [cedula]
+  );
+  const data = rows[0];
+  res.render("Formulario_Login.ejs", { data });
+};
+
 export const agregarHistorial = async (req, res) => {};

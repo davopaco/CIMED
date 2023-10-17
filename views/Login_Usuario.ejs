@@ -20,7 +20,7 @@
                 <h3>Buen día, <%=data.nombre%></h3>
                 <form class="form">
                     <input type="button" value="Agendar Cita" id="sign-in2" class="Btn1" onclick="redirectAgent_Cita()">
-                    <input type="button" value="Ver Datos del Usuario" id="sign-in2" class="Btn1" onclick="">
+                    <input type="button" value="Ver Datos del Usuario" id="sign-in2" class="Btn1" onclick="redirectModPac()">
                     <input type="button" value="Comprar en farmacia" id="sign-in2" class="Btn1" onclick="">
                 </form>
                 <form class="form">
@@ -42,7 +42,10 @@
         </div>
         
     </div>
-
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        const id = searchParams.get("id");
+    </script>
     <script src="/javascripts/login.js"></script>
 </body>
 </html>

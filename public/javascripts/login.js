@@ -95,6 +95,10 @@ function redirectInit() {
   location.href = "/";
 }
 
+function redirectModPac() {
+  location.href = `/paciente/modificar?id=${id}`;
+}
+
 function redirectAlianza_Doctor() {
   location.href = "Alianza_consulta_Doctor.html";
 }
