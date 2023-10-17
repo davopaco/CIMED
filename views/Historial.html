@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Formulario de Datos</title>
+        <link rel="stylesheet" href="/public/stylesheets/historial.css">
         <link rel="stylesheet" href="/stylesheets/historial.css">
         
 </head>
@@ -13,11 +14,14 @@
 
         <div class="information">
             <div class="info-childs">
-                <img src="/images/logo.png" class="img" onclick="redirectInit()">
+                <img src="/public/images/logo.png" class="img" onclick="redirectInit()">
+                <br>
                 <h1>Historial Clinico </h1>
+                <br>
                 <p>Complete el siguiente formulario con la información del paciente</p>
                 <h3>Seleccione el paciente</h3>
                 <h2><% data[0].nombre %></h2>
+                <br>
                 <form id="cita-form">
                     <select id="paciente" name="paciente">
                         <option value="">Seleccione el paciente.</option>
@@ -31,11 +35,11 @@
                 <button type="button" id="gen-hist">Generar Historial</button>
                 
             </div>
-        </div>
-
+        </div>  
         <section>
-            <h2>Consulta Médica</h2>
             <form id="consulta-medica">
+                <h2>Consulta Médica</h2>
+                <br>
                 <label style="color: #7a7a9a" >Fecha:
                     <input type="date" style="color: #7a7a9a;" id="fecha" name="fecha" required>
                 </label>
@@ -50,13 +54,11 @@
                 <textarea  id="resultados" name="resultados" rows="4" ></textarea>
 
             </form>
-
-        </section>    
-            
-            
+        </section>       
         <section>
-            <h2>Antecedentes</h2>
             <form id="antecedentes">
+                <h2>Antecedentes</h2>
+                <br>
                 <label for="alergias">Alergias:</label>
                 <textarea  id="alergias" name="alergias" rows="2" ></textarea>
     
@@ -68,15 +70,16 @@
     
                 <label for="medic_ant">Medicamentos:</label>
                 <textarea  id="medic_ant" name="medicamentos" rows="4" ></textarea>
-    
+                
             </form>
             <button id="gen-rec-med" onclick="mostrarreceta()">Generar Receta Médica</button>
         </section>
         
-        <div id="form_receta" style="display: none;">
-            <section>
+        <div id="form_receta">
+            <section class="receta_medica">
                 <form id="receta-medica">
                     <h2>Receta Médica</h2>
+                    <br>
                     <label for="medicamento"> Medicamento:</label> 
                     <select id="medicamento" name="medicamento" onchange="mostrarCodigo()">
                         <option value="">Seleccione medicamento</option>  
@@ -89,15 +92,11 @@
                         
                     <label for="codigo">Código:</label>
                     <input type="text" id="codigo" name="codigo" readonly>
-                </form>
-        
-                    
+                </form>    
             </section>
         
         </div>
-       
-      
-       
+
     </div>
     <script>
         const searchParams = new URLSearchParams(window.location.search);
@@ -112,7 +111,7 @@
             document.getElementById("codigo").value = codigos[medSelect] || "";
         }
     </script>
-
-<script src="/javascripts/historial.js"></script>        
+    <script src="/public/javascripts/historial.js"></script>
+    <script src="/javascripts/historial.js"></script>        
 </body>
 </html>

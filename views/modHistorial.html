@@ -4,31 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/stylesheets/modHistorial.css">
     <link rel="stylesheet" href="../stylesheets/modHistorial.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 <body>
-
-
     <div class="container">
-       
-       <div class="header">
-          
-       </div>
-
         <form class="form" method="get" id="mod_historial">
             <div class="fields">
                 <div class="input-field">
-                    <label>Cédula</label>
-                    <input type="text"  placeholder="Ingrese la cédula del paciente los síntomas del paciente" id="cedula" required>
+                    <label>Seleccione Historial</label>
+                    <br>
+                    <form id="cita-form">
+                        <select id="paciente" name="paciente">
+                            <option value="">Seleccione el paciente.</option>
+                            <% if (data) {%>
+                                <% for (var i =0; i< data.length; i++) {%>
+                                    <option value="<%= data[i].id %>"><%= data[i].nombre %> | <%= data[i].fecha_asig %></option>
+                                <% } %>
+                            <% } %>
+                        </select>
+                    </form>
                 </div>
                 <button type="reset">Buscar</button>
-              
             </div>
         </form>
-
+        <br>
         <header>Ingrese los datos que quiera modificar</header>
+
         <form action="#" method="post">
             <div class="datos usuario">
                 <div class="fields">
