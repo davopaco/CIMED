@@ -3,13 +3,17 @@ document.addEventListener("DOMContentLoaded", function () {
         tablaInv = document.getElementById("table-inv"),
         selectInv = document.getElementById("category-select");
     rows = tablaInv.getElementsByClassName("filterable-row");
+
+    var valueOfSelect;
     selectInv.addEventListener("change", function () {
         valueOfSelect = selectInv.value;
         if (valueOfSelect == 0) {
             console.log("Disabled")
+            searchBox.placeholder = "Buscar";
             searchBox.disabled = true;
         } else {
             console.log("Not disabled")
+            searchBox.placeholder = "Buscar " + selectInv.options[selectInv.selectedIndex].innerHTML;
             searchBox.disabled = false;
         }
     });
