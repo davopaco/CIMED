@@ -109,8 +109,7 @@ button:hover {
 }
 .receta_medica{
     background-color: #f8f8f8;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+
 }
 
 #paciente {
@@ -128,6 +127,15 @@ button:hover {
     .img{
         height: 100px;
     }
+    .section{
+        width: 90%;
+    }
+    .receta_medica{
+        width: 90%;
+    }
+    .label{
+        height: 30px;
+    }
 }
 @media screen and (max-width:580px) {
     html {
@@ -138,7 +146,7 @@ button:hover {
         height: auto;
         flex-direction: column;
     }
-    
+
     .information{
         width: 100%;
         padding: 20px;
@@ -154,8 +162,18 @@ button:hover {
         border-bottom-left-radius: 20px;
         border-top-right-radius: 0;
     }
+    .section{
+        width: 90%;
+    }
+    .receta_medica{
+        width: 90%;
+    }
+    .label{
+        height: 30px;
+    }
 
     .img{
-        height: 80px;
+        width: 100px;
+        height: 90px;
     }
 }
