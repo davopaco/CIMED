@@ -41,13 +41,13 @@ export const getProducto = async (req, res) => {
 
 };
 export const defaultR = async(req, res) => {
+  console.log("Entró a default")
     const [productos] = await pool.query(
-    "SELECT * FROM PRODUCTO; ",
+    "SELECT * FROM PRODUCTO"
   );
-
   const data=productos;
+  console.log(data)
   res.render("inventario", {data});
-  
 };
 
 export const getProductoBuscar = async (req, res) => {

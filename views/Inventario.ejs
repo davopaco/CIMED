@@ -12,12 +12,12 @@
        
         <h1>Lista de productos CIMED</h1>
         <div class="search-container">
-            <input type="text" class="search-box" placeholder="Buscar ID">
-            <button class="search-button">Buscar</button>
+            <input type="text" id="search-box" class="search-box" placeholder="Buscar ID">
+            <button type="button" id="button-search" class="search-button">Buscar</button>
         </div>
     </div>
     <div class="table-container">
-        <table>
+        <table id="table-inv">
             <tr>
                 <th>CODIGO</th>
                 <th>NOMBRE</th>
@@ -25,14 +25,15 @@
                 <th>DESCRIPCION</th>
             </tr>
             <% for (var i = 0; i < data.length; i++) { %>
-                <tr>
-                    <td><%= data[i]['ID'] %></td>
-                    <td><%= data[i]['NOMBRE'] %></td>
-                    <td><%= data[i]['CANTIDAD_STOCK'] %></td>
-                    <td><%= data[i]['DESCRIPCION'] %></td>
+                <tr class="filterable-row">
+                    <td><%= data[i].ID %></td>
+                    <td><%= data[i].NOMBRE %></td>
+                    <td><%= data[i].CANTIDAD_STOCK %></td>
+                    <td><%= data[i].DESCRIPCION %></td>
                 </tr>
             <% } %>
         </table>
     </div>
+    <script src="/javascripts/inventario.js"></script>
 </body>
 </html>

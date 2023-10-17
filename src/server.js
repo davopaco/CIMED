@@ -10,7 +10,7 @@ import pacienteRoutes from "./routes/paciente.routes.js";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import cambioUsuarioRoutes from "./routes/cambioUsuario.routes.js";
-import inventario from "./routes/inventario.js";
+import inventario from "./routes/inventario.routes.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
