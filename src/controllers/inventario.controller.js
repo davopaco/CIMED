@@ -34,7 +34,8 @@ export const getProducto = async (req, res) => {
     "SELECT * FROM PRODUCTO WHERE ID = ?",
     [id]
   );
-  res.render("productos", {productos});
+  const data=productos[0];
+  res.render("productos", {data});
   //res.json(productos[0]);
 //hola
 
@@ -43,5 +44,23 @@ export const defaultR = async(req, res) => {
     const [productos] = await pool.query(
     "SELECT * FROM PRODUCTO; ",
   );
-  res.render("productos", {productos});
+
+  const data=productos;
+  res.render("inventario", {data});
+  
 };
+
+export const getProductoBuscar = async (req, res) => {
+  const id = req.params.id;
+  const [productos] = await pool.query(
+  "SELECT * FROM PRODUCTO WHERE ID = ?",
+  [id]
+);
+const data=productos[0];
+res.render("productos", {data});
+//res.json(productos[0]);
+//hola
+
+};  
+
+  

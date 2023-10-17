@@ -1,9 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello, World</title>
+    <link rel="shortcut icon" href="/icon/favicon.png">
+    <link rel="stylesheet" href="/stylesheets/inventario.css">
+    <title>Lista de productos</title>
+   
+    </style>
 </head>
 <body>
-    <h1>Hello, World</h1>
+    <div class="header">
+       
+        <h1>Lista de productos CIMED</h1>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Buscar ID">
+            <button class="search-button">Buscar</button>
+        </div>
+    </div>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>CODIGO</th>
+                <th>NOMBRE</th>
+                <th>CANTIDAD</th>
+                <th>DESCRIPCION</th>
+            </tr>
+            <% for (var i = 0; i < data.length; i++) { %>
+                <tr>
+                    <td><%= data[i]['ID'] %></td>
+                    <td><%= data[i]['NOMBRE'] %></td>
+                    <td><%= data[i]['CANTIDAD_STOCK'] %></td>
+                    <td><%= data[i]['DESCRIPCION'] %></td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
 </body>
 </html>
