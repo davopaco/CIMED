@@ -246,6 +246,48 @@ background: linear-gradient(
     transform: translateY(-300%);
 }
 
+/*Modificacion de datos de usuario doctor */
+.registro_Datos_Doctor{
+    height: 650px;
+    max-width: 900px;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 5px 7px rgba(0,0,0,.1);
+    transition: all 1s ease;
+    margin: 10px
+}
+.hide{
+    position: absolute;
+    transform: translateY(-300%);
+}
+
+.hide1{
+    position: absolute;
+    transform: translateY(-300%);
+}
+
+/*Modificacion de datos de usuario logistica */
+.registro_Datos_logistica{
+    height: 500px;
+    max-width: 900px;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 5px 7px rgba(0,0,0,.1);
+    transition: all 1s ease;
+    margin: 10px
+}
+
+.hide{
+    position: absolute;
+    transform: translateY(-300%);
+}
+
+.hide1{
+    position: absolute;
+    transform: translateY(-300%);
+}
+
+
 /*Responsive*/
 @media screen and (max-width:750px) {
     html {
