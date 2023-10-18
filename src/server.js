@@ -10,6 +10,7 @@ import pacienteRoutes from "./routes/paciente.routes.js";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import cambioUsuarioRoutes from "./routes/cambioUsuario.routes.js";
+import inventario from "./routes/inventario.routes.js";
 import logisticaRoutes from "./routes/logistica.routes.js";
 import medicoRoutes from "./routes/medico.routes.js";
 import historialRoutes from "./routes/historial.routes.js";
@@ -35,11 +36,12 @@ app.use(
 
 export var sessions = [];
 
-app.use(homeRoutes);
 app.use(loginPacRoutes);
+app.use(homeRoutes);
 app.use(citaRoutes);
 app.use(pacienteRoutes);
 app.use(cambioUsuarioRoutes);
+app.use(inventario);
 app.use(logisticaRoutes);
 app.use(medicoRoutes);
 app.use(historialRoutes);

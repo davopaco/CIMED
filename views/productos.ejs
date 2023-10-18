@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="/icon/favicon.png">
+    <link rel="stylesheet" href="/stylesheets/inventario.css">
+    <title>Lista de productos</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Lista de productos CIMED</h1>
+        <div class="search-container">
+            <input type="search" class="search-box" placeholder="Buscar ID" id="search">
+            <button class="search-button" id="searchbtn">Buscar</button>
+        </div>
+
+        
+    </div>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>CODIGO</th>
+                <th>NOMBRE</th>
+                <th>CANTIDAD</th>
+                <th>DESCRIPCION</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const table = document.querySelector('table');
+
+       // Make an API request with the search term
+            fetch('/inventario/ver/'+searchTerm)
+            
+    </script>
+</body>
+</html>

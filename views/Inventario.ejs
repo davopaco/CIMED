@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="/icon/favicon.png">
+    <link rel="stylesheet" href="/stylesheets/inventario.css">
+    <title>Lista de productos</title>
+   
+    </style>
+</head>
+<body>
+    <div class="header">
+       
+        <h1>Lista de productos CIMED</h1>
+        <div class="search-container">
+            <input type="text" id="search-box" class="search-box" placeholder="Buscar">
+            <select id="category-select">
+                <option value="0">Todas las Categorías</option>
+                <option value="1">ID</option>
+                <option value="2">Nombre</option>
+                <option value="3">Cantidad</option>
+            </select>
+        </div>
+    </div>
+    <div class="table-container">
+        <table id="table-inv">
+            <tr>
+                <th>CODIGO</th>
+                <th>NOMBRE</th>
+                <th>CANTIDAD</th>
+                <th>DESCRIPCION</th>
+            </tr>
+            <% for (var i = 0; i < data.length; i++) { %>
+                <tr class="filterable-row">
+                    <td><%= data[i].ID %></td>
+                    <td><%= data[i].NOMBRE %></td>
+                    <td><%= data[i].CANTIDAD_STOCK %></td>
+                    <td><%= data[i].DESCRIPCION %></td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+    <script src="/javascripts/inventario.js"></script>
+</body>
+</html>
