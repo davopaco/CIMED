@@ -75,18 +75,18 @@ background: linear-gradient(
 
 
 .info-childs input{
-    background-color: transparent;
+    background-color: #9191bd;
     outline: none;
     border: solid 2px #9191bd;
     border-radius: 20px;
     padding: 10px 20px;
-    color: #9191bd;
+    color: #fff;
     cursor: pointer;
     transition: background-color .3s ease;
 }
 
 .info-childs input:hover{
-    background-color: #9191bd;
+    background-color: #c7c7f3;
     border: none;
     color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0,.1);
@@ -227,7 +227,7 @@ background: linear-gradient(
 
 /*Modificacion de datos de usuario */
 .registro_Datos{
-    height: 750px;
+    height: 800px;
     max-width: 900px;
     display: flex;
     border-radius: 20px;
@@ -245,6 +245,48 @@ background: linear-gradient(
     position: absolute;
     transform: translateY(-300%);
 }
+
+/*Modificacion de datos de usuario doctor */
+.registro_Datos_Doctor{
+    height: 650px;
+    max-width: 900px;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 5px 7px rgba(0,0,0,.1);
+    transition: all 1s ease;
+    margin: 10px
+}
+.hide{
+    position: absolute;
+    transform: translateY(-300%);
+}
+
+.hide1{
+    position: absolute;
+    transform: translateY(-300%);
+}
+
+/*Modificacion de datos de usuario logistica */
+.registro_Datos_logistica{
+    height: 500px;
+    max-width: 900px;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 5px 7px rgba(0,0,0,.1);
+    transition: all 1s ease;
+    margin: 10px
+}
+
+.hide{
+    position: absolute;
+    transform: translateY(-300%);
+}
+
+.hide1{
+    position: absolute;
+    transform: translateY(-300%);
+}
+
 
 /*Responsive*/
 @media screen and (max-width:750px) {

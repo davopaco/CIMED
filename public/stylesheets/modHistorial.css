@@ -12,7 +12,7 @@ body {
     justify-content: center;
     background: linear-gradient(45deg,
             rgba(66, 183, 245, 0.8) 0%,
-            rgba(66, 245, 189, 0.4) 100%)
+            rgba(66, 245, 189, 0.4) 100%);
 }
 
 .container {
@@ -78,24 +78,26 @@ form .fields .input-field {
 }
 
 .container form button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
-    width: 100%;
-    max-width: 200px;
-    background-color: #55cae7;
+    background-color: #9191bd;
+    color: #fff;
+    border-radius: 20px;
     border: none;
-    outline: none;
-    border-radius: 5px;
-    margin: 25px 0;
+    padding: 10px 15px;
     cursor: pointer;
-    transition: all 0.3s linear;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
 
 }
 
 form button:hover {
-    background-color: #39a8c4;
+    background-color: #7a7a9a;
+}
+
+#paciente {
+    border: 1px solid #aaa;
+    color: #333;
+    height: 40px;
+    border-radius: 5px;
 }
 
 
