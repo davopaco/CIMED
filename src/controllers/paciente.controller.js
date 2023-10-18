@@ -46,12 +46,16 @@ export const modificarDatos = async (req, res) => {
   const cedula = req.query.id;
   console.log(req.customFileName);
   const referencia_pfp = req.customFileName;
+  var queryPart = "";
+  if (req.customFileName != undefined) {
+    queryPart = `, REFERENCIA_PFP = ${referencia_pfp}`;
+  }
   const saltGen = salt();
   const hashedPsword = hashing(clave, saltGen);
   console.log("Se está actualizando al usuariooo");
   console.log(req.body);
   const [rows] = await pool.query(
-    "UPDATE PACIENTE SET NOMBRE=?, HASH=?, SALT=?, LUGAR_NACIMIENTO=?, ESTADO_CIVIL=?, TELEFONO_MOVIL=?, TELEFONO_FIJO=?, EMAIL=?, DIRECCION=?, REFERENCIA_PFP=? WHERE ID=?",
+    `UPDATE PACIENTE SET NOMBRE=?, HASH=?, SALT=?, LUGAR_NACIMIENTO=?, ESTADO_CIVIL=?, TELEFONO_MOVIL=?, TELEFONO_FIJO=?, EMAIL=?, DIRECCION=?${queryPart} WHERE ID=?`,
     [
       nombre,
       (await hashedPsword).toString(),
@@ -62,7 +66,6 @@ export const modificarDatos = async (req, res) => {
       fijo,
       email,
       direccion,
-      referencia_pfp,
       cedula,
     ]
   );
