@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario de Datos</title>
+        <link rel="stylesheet" href="/stylesheets/historial.css">
+        
+</head>
+
+<body>
+    <div class="container-form historial ">
+
+        <div class="information">
+            <div class="info-childs">
+                <img src="/images/logo.png" class="img" onclick="redirectInit()">
+                <h1>Historial Clinico </h1>
+                <p>Complete el siguiente formulario con la información del paciente</p>
+                <h3>Seleccione el paciente</h3>
+                <h2><% data[0].nombre %></h2>
+                <form id="cita-form">
+                    <select id="paciente" name="paciente">
+                        <option value="">Seleccione el paciente.</option>
+                        <% if (data) {%>
+                            <% for (var i =0; i< data.length; i++) {%>
+                                <option value="<%= data[i].id %>"><%= data[i].nombre %> | <%= data[i].fecha_asig %></option>
+                            <% } %>
+                        <% } %>
+                    </select>
+                </form>
+                <button type="button" id="gen-hist">Generar Historial</button>
+                
+            </div>
+        </div>
+
+        <section>
+            <h2>Consulta Médica</h2>
+            <form id="consulta-medica">
+                <label style="color: #7a7a9a" >Fecha:
+                    <input type="date" style="color: #7a7a9a;" id="fecha" name="fecha" required>
+                </label>
+
+                 <label for="sintomas">Síntomas:</label>
+                <textarea  id="sintomas" name="sintomas" rows="4" required></textarea>
+
+                <label for="examen">Examen Físico:</label>
+                <textarea  id="examen" name="examen" rows="4" ></textarea>
+
+                <label for="resultados">Resultados Laboratorio:</label>
+                <textarea  id="resultados" name="resultados" rows="4" ></textarea>
+
+            </form>
+
+        </section>    
+            
+            
+        <section>
+            <h2>Antecedentes</h2>
+            <form id="antecedentes">
+                <label for="alergias">Alergias:</label>
+                <textarea  id="alergias" name="alergias" rows="2" ></textarea>
+    
+                <label for="ante_med">Antecedentes Médicos:</label>
+                <textarea  id="ante_med" name="ante_med" rows="2" ></textarea>
+    
+                <label for="ante_fam">Antecedentes Familiares:</label>
+                <textarea  id="ante_fam" name="ante_fam" rows="4" ></textarea>
+    
+                <label for="medic_ant">Medicamentos:</label>
+                <textarea  id="medic_ant" name="medicamentos" rows="4" ></textarea>
+    
+            </form>
+            <button id="gen-rec-med" onclick="mostrarreceta()">Generar Receta Médica</button>
+        </section>
+        
+        <div id="form_receta" style="display: none;">
+            <section>
+                <form id="receta-medica">
+                    <h2>Receta Médica</h2>
+                    <label for="medicamento"> Medicamento:</label> 
+                    <select id="medicamento" name="medicamento" onchange="mostrarCodigo()">
+                        <option value="">Seleccione medicamento</option>  
+                        <% if (data) {%>
+                            <% for (var i =0; i< meds.length; i++) {%>
+                                <option value="<%= i %>"><%= meds[i] %></option>
+                            <% } %>
+                        <% } %>  
+                    </select>
+                        
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" name="codigo" readonly>
+                </form>
+        
+                    
+            </section>
+        
+        </div>
+       
+      
+       
+    </div>
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        const id = searchParams.get("id");
+    </script>
+    <script>
+        function mostrarCodigo() {
+
+            var medSelect = document.getElementById("medicamento").value;
+            var codigos = JSON.parse('<%- JSON.stringify(codigosMed)%>')
+            console.log(codigos);
+            document.getElementById("codigo").value = codigos[medSelect] || "";
+        }
+    </script>
+
+<script src="/javascripts/historial.js"></script>        
+</body>
+</html>
