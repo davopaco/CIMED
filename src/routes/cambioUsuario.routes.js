@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { cambioUsuarioPage } from "../functions/redirects.js";
+import { cambioUsuarioPage } from "../controllers/cambioUsuario.controller.js";
 
 const router = Router();
-router.post("/cambioUsuario", cambioUsuarioPage);
+router.get("/cambioUsuario", cambioUsuarioPage);
 
 export default router;

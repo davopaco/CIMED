@@ -17,11 +17,31 @@ const storage = multer.diskStorage({
     let extArray = file.mimetype.split("/");
     let extension = extArray[extArray.length - 1];
     req.customFileName = cedula.toString() + "." + extension;
+    console.log("Guardando imagen en multer");
     cb(null, req.customFileName);
   },
 });
 
-export const upload = multer({ storage: storage });
+const fileFilter = async (req, file, cb) => {
+  await checkPfp(req);
+  if (req.savePfp) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+export const checkPfp = async (req) => {
+  console.log(req.body);
+  await checkPfpExistsinPacienteDB(req);
+  if (req.savePfp === false) return;
+  await checkPfpExistsinMedicoDB(req);
+  if (req.savePfp === false) return;
+  await checkPfpExistsinLogisticaDB(req);
+  if (req.savePfp === false) return;
+};
+
+export const upload = multer({ fileFilter, storage: storage });
 
 export const loginUser = async (req, res, next) => {
   const { cedulaL, claveL } = req.body;
@@ -75,7 +95,7 @@ export const loginUser = async (req, res, next) => {
   next();
 };
 
-export const registerUser = async (req, res) => {
+async function pacienteDB(req, res) {
   const {
     cedulaR,
     nombreR,
@@ -91,8 +111,14 @@ export const registerUser = async (req, res) => {
     estadoCivR,
   } = req.body;
 
-  const refPfp = req.customFileName;
-
+  var refPfp;
+  console.log("Entró a paciente");
+  if (req.savePfp === false) {
+    refPfp = req.pfp;
+  } else {
+    refPfp = req.customFileName;
+  }
+  console.log(refPfp);
   const [rows] = await pool.query("SELECT * FROM PACIENTE WHERE ID = ?", [
     cedulaR,
   ]);
@@ -123,10 +149,159 @@ export const registerUser = async (req, res) => {
       refPfp,
     ]
   );
+  if (rows1.errno)
+    return res.status(503).json({
+      message: "Ocurrió un error al crear el paciente. Intente nuevamente.",
+    });
   if (rows1.affectedRows > 0)
     return res.status(200).json({
-      message: "Usuario creado con exito!",
+      message: "Usuario creado con éxito!",
     });
+}
+
+async function medicoDB(req, res) {
+  const { cedulaR, nombreR, tarjetaProfesionalR, claveR, especialidadidR } =
+    req.body;
+  console.log("Entró a medicoDB");
+  var refPfp;
+
+  if (req.savePfp === false) {
+    refPfp = req.pfp;
+  } else {
+    refPfp = req.customFileName;
+  }
+  const [rows] = await pool.query(
+    "SELECT * FROM PROFESIONAL_SALUD WHERE ID = ?",
+    [cedulaR]
+  );
+
+  const saltGen = salt();
+  const hashedPsword = hashing(claveR, saltGen);
+
+  if (rows.length > 0)
+    return res.status(409).json({
+      message: "El médico ya existe. Intente nuevamente.",
+    });
+
+  const [rows1] = await pool.query(
+    "INSERT INTO PROFESIONAL_SALUD VALUES (?, ?, ?, ?, ?, ?, ?)",
+    [
+      cedulaR,
+      nombreR,
+      tarjetaProfesionalR,
+      (await hashedPsword).toString(),
+      (await saltGen).toString(),
+      refPfp,
+      especialidadidR,
+    ]
+  );
+  if (rows1.errno)
+    return res.status(503).json({
+      message: "Ocurrió un error al crear el médico. Intente nuevamente.",
+    });
+  if (rows1.affectedRows > 0)
+    return res.status(200).json({
+      message: "Usuario creado con éxito!",
+    });
+}
+
+async function logisticaDB(req, res) {
+  const { cedulaR, nombreR, claveR, emailR, direccionR } = req.body;
+
+  var refPfp;
+
+  if (req.savePfp === false) {
+    refPfp = req.pfp;
+  } else {
+    refPfp = req.customFileName;
+  }
+  const [rows] = await pool.query("SELECT * FROM LOGISTICA WHERE ID = ?", [
+    cedulaR,
+  ]);
+
+  const saltGen = salt();
+  const hashedPsword = hashing(claveR, saltGen);
+
+  if (rows.length > 0)
+    return res.status(409).json({
+      message: "El usuario de logística ya existe. Intente nuevamente.",
+    });
+
+  const [rows1] = await pool.query(
+    "INSERT INTO LOGISTICA VALUES (?, ?, ?, ?, ?, ?, ?)",
+    [
+      cedulaR,
+      (await hashedPsword).toString(),
+      (await saltGen).toString(),
+      nombreR,
+      emailR,
+      direccionR,
+      refPfp,
+    ]
+  );
+  if (rows1.errno)
+    return res.status(503).json({
+      message:
+        "Ocurrió un error al crear el usuario de logística. Intente nuevamente.",
+    });
+  if (rows1.affectedRows > 0)
+    return res.status(200).json({
+      message: "Usuario creado con éxito!",
+    });
+}
+
+async function checkPfpExistsinPacienteDB(req) {
+  const [rows] = await pool.query(
+    "SELECT referencia_pfp FROM PACIENTE WHERE ID = ?",
+    [req.body.cedulaR]
+  );
+  if (rows.length > 0) {
+    req.savePfp = false;
+    req.pfp = rows[0].referencia_pfp;
+  } else {
+    req.savePfp = true;
+  }
+}
+
+async function checkPfpExistsinLogisticaDB(req) {
+  const [rows] = await pool.query(
+    "SELECT referencia_pfp FROM LOGISTICA WHERE ID = ?",
+    [req.body.cedulaR]
+  );
+  if (rows.length > 0) {
+    req.savePfp = false;
+    req.pfp = rows[0].referencia_pfp;
+  } else {
+    req.savePfp = true;
+  }
+}
+
+async function checkPfpExistsinMedicoDB(req) {
+  const [rows] = await pool.query(
+    "SELECT referencia_pfp FROM PROFESIONAL_SALUD WHERE ID = ?",
+    [req.body.cedulaR]
+  );
+  if (rows.length > 0) {
+    req.savePfp = false;
+    req.pfp = rows[0].referencia_pfp;
+  } else {
+    req.savePfp = true;
+  }
+}
+
+export const registerUser = async (req, res) => {
+  try {
+    var privilegio = 1;
+    console.log(req.body.privilegio);
+    if (req.body.privilegio) {
+      privilegio = req.body.privilegio;
+    }
+    if (privilegio == 1) await pacienteDB(req, res);
+    if (privilegio == 2) await medicoDB(req, res);
+    if (privilegio == 4) await logisticaDB(req, res);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const defaultR = (req, res) => {

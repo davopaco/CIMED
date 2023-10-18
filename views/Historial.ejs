@@ -14,15 +14,28 @@
         <div class="information">
             <div class="info-childs">
                 <img src="/images/logo.png" class="img" onclick="redirectInit()">
-                <h2>Historial Clinico </h2>
+                <h1>Historial Clinico </h1>
                 <p>Complete el siguiente formulario con la información del paciente</p>
-                <button type="submit">Generar Historial</button> 
+                <h3>Seleccione el paciente</h3>
+                <h2><% data[0].nombre %></h2>
+                <form id="cita-form">
+                    <select id="paciente" name="paciente">
+                        <option value="">Seleccione el paciente.</option>
+                        <% if (data) {%>
+                            <% for (var i =0; i< data.length; i++) {%>
+                                <option value="<%= data[i].id %>"><%= data[i].nombre %> | <%= data[i].fecha_asig %></option>
+                            <% } %>
+                        <% } %>
+                    </select>
+                </form>
+                <button type="button" id="gen-hist">Generar Historial</button>
+                
             </div>
         </div>
 
         <section>
             <h2>Consulta Médica</h2>
-            <form action="#" method="post">
+            <form id="consulta-medica">
                 <label style="color: #7a7a9a" >Fecha:
                     <input type="date" style="color: #7a7a9a;" id="fecha" name="fecha" required>
                 </label>
@@ -43,7 +56,7 @@
             
         <section>
             <h2>Antecedentes</h2>
-            <form action="#" method="post">
+            <form id="antecedentes">
                 <label for="alergias">Alergias:</label>
                 <textarea  id="alergias" name="alergias" rows="2" ></textarea>
     
@@ -53,30 +66,29 @@
                 <label for="ante_fam">Antecedentes Familiares:</label>
                 <textarea  id="ante_fam" name="ante_fam" rows="4" ></textarea>
     
-                <label for="medicamentos">Medicamentos:</label>
-                <textarea  id="medicamentos" name="medicamentos" rows="4" ></textarea>
+                <label for="medic_ant">Medicamentos:</label>
+                <textarea  id="medic_ant" name="medicamentos" rows="4" ></textarea>
     
             </form>
-            <button onclick="mostrarreceta()">Generar Receta Médica</button>
+            <button id="gen-rec-med" onclick="mostrarreceta()">Generar Receta Médica</button>
         </section>
         
         <div id="form_receta" style="display: none;">
             <section>
-                <form>
+                <form id="receta-medica">
                     <h2>Receta Médica</h2>
                     <label for="medicamento"> Medicamento:</label> 
                     <select id="medicamento" name="medicamento" onchange="mostrarCodigo()">
-                        <option value="">Seleccione medicamento</option>
-                        <option value="1">Acetaminofén 500 mg</option>
-                        <option value="2">Acido Bórico 5 G</option>
-                        <option value="3">Acetato de Aluminio</option>        
+                        <option value="">Seleccione medicamento</option>  
+                        <% if (data) {%>
+                            <% for (var i =0; i< meds.length; i++) {%>
+                                <option value="<%= i %>"><%= meds[i] %></option>
+                            <% } %>
+                        <% } %>  
                     </select>
                         
                     <label for="codigo">Código:</label>
                     <input type="text" id="codigo" name="codigo" readonly>
-        
-                    
-        
                 </form>
         
                     
@@ -87,26 +99,20 @@
       
        
     </div>
-
-        
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        const id = searchParams.get("id");
+    </script>
     <script>
         function mostrarCodigo() {
 
             var medSelect = document.getElementById("medicamento").value;
-            var codigos = {
-                "1": "INF123",
-                "2": "MED456",
-                "3": "ING789"
-            };
+            var codigos = JSON.parse('<%- JSON.stringify(codigosMed)%>')
+            console.log(codigos);
             document.getElementById("codigo").value = codigos[medSelect] || "";
         }
     </script>
 
-<script>
-    function mostrarreceta() {
-        var formulario = document.getElementById("form_receta");
-        formulario.style.display = "block";
-    }
-</script>        
+<script src="/javascripts/historial.js"></script>        
 </body>
 </html>

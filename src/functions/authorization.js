@@ -1,6 +1,7 @@
 import { sessions } from "../server.js";
 
 export function sessionChecker(req, res, next) {
+  console.log("Autenticando");
   if (req.session.profile) {
     if (req.session.profile.username === req.query.id) {
       next();

@@ -11,7 +11,9 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import cambioUsuarioRoutes from "./routes/cambioUsuario.routes.js";
 import inventario from "./routes/inventario.routes.js";
-
+import logisticaRoutes from "./routes/logistica.routes.js";
+import medicoRoutes from "./routes/medico.routes.js";
+import historialRoutes from "./routes/historial.routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,21 +31,20 @@ app.use(
       "YNJRhIywZCsjP2QDtFEfKqDleQ8tVMH6j6Le3T5KAL69IKkaa07yEPf+FDQ7s8bDRFd/R9hOXSjW36eYM0s1froKuwNF9eGXCg1+W/3vIIKBrKMiDY5Fi739s9jEDomx08kr10B1ihC0ngkJYcLHDhbAZ4fsGvl8CoBLuLFyYao=",
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      secure: false,
-      expires: 60 * 60 * 24,
-    },
   })
 );
 
 export var sessions = [];
 
-app.use(homeRoutes);
 app.use(loginPacRoutes);
+app.use(homeRoutes);
 app.use(citaRoutes);
 app.use(pacienteRoutes);
 app.use(cambioUsuarioRoutes);
 app.use(inventario);
+app.use(logisticaRoutes);
+app.use(medicoRoutes);
+app.use(historialRoutes);
 
 app.use((req, res) => {
   res.status(404).json({

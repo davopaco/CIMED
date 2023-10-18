@@ -18,80 +18,94 @@
         <div class="information">
             <div class="info-childs">
                 <div class="icons_Usuario">
-                    <i class='bx bx-image-add'onclick="#" ></i>
+                    <img alt="Profile picture" id="profile-pic">
                 </div>
                 <br>
                 <br>
-                <input type="button" value="Modificar Foto" id="sign-in">
+                <input type="file" style="display: none;" id="pfp" name="pfp" accept="image/*" onchange="loadFile(event)" form="modificar-form">
+                <br>
+                <br>
+                <input type="button" value="Modificar Foto" id="sign-in" onclick="document.getElementById('pfp').click();" form="modificar-form">
+                <div class="form-information-childs">
+                    <input type="submit" value="Modificar Datos" id="sign-in2" class="Btn1" form="modificar-form">
+                </div>
             </div>
         </div>
         <div class="form-information">
             <div class="form-information-childs">
-                <form class="form">
+                <form class="form" id="modificar-form" enctype="multipart/form-data">
                     <label>
                         <i class='bx bx-captions'></i>
-                        <input type="text" placeholder="Cedula">
+                        <input type="text" placeholder="Cedula" id="cedula" name="cedula" value="<%= data.ID %>" disabled>
                     </label>
                     <label>
                         <i class='bx bx-user' ></i>
-                        <input type="text" placeholder="Nombre Completo">
+                        <input type="text" placeholder="Nombre Completo" id="nombre" name="nombre" value="<%= data.NOMBRE %>">
                     </label>
                     <label style="color: #7a7a9a" >Nacimiento
-                        <input type="date" style="color: #7a7a9a;">
+                        <input type="date" style="color: #7a7a9a;" value="<%= data.FECHA_NACIMIENTO %>" disabled>
                     </label>
                     <label>
                         <i class='bx bxs-map-pin'></i>
-                        <input type="text" placeholder="Lugar de Nacimiento">
+                        <input type="text" placeholder="Lugar de Nacimiento" id="lugar_nac" name="lugar_nac" value="<%= data.LUGAR_NACIMIENTO %>">
                     </label>
                     <label>
                         <i class='bx bxs-magic-wand'></i>
-                        <input placeholder="Tipo de sangre">
-                        <select name="menu">
+                        <input placeholder="Tipo de sangre" readonly>
+                        <select name="tipo_sang" disabled>
                             <option value="0">...</option>
-                            <option value="1">A+</option>
-                            <option value="2">A-</option>
-                            <option value="3">B+</option>
-                            <option value="4">B-</option>
-                            <option value="5">AB+</option>
-                            <option value="6">AB-</option>
-                            <option value="7">O+</option>
-                            <option value="8">O-</option>
+                            <option value="1"<% if (data.TIPO_SANGRE === "A+") { %>selected<% } %>>A+</option>
+                            <option value="2"<% if (data.TIPO_SANGRE === "A-") { %>selected<% } %>>A-</option>
+                            <option value="3"<% if (data.TIPO_SANGRE === "B+") { %>selected<% } %>>B+</option>
+                            <option value="4"<% if (data.TIPO_SANGRE === "B-") { %>selected<% } %>>B-</option>
+                            <option value="5"<% if (data.TIPO_SANGRE === "AB+") { %>selected<% } %>>AB+</option>
+                            <option value="6"<% if (data.TIPO_SANGRE === "AB-") { %>selected<% } %>>AB-</option>
+                            <option value="7"<% if (data.TIPO_SANGRE === "O+") { %>selected<% } %>>O+</option>
+                            <option value="8"<% if (data.TIPO_SANGRE === "O-") { %>selected<% } %>>O-</option>
                         </select>
                     </label>
                     <label>
                         <i class='bx bxs-magic-wand'></i>
-                        <input placeholder="Estado Civil">
-                        <select name="menu">
+                        <input placeholder="Estado Civil" readonly>
+                        <select name="estado_civ" id="estado_civ">
                             <option value="0">...</option>
-                            <option value="1">Casado</option>
-                            <option value="2">Soltero</option>
-                            <option value="3">Union Libre</option>
-                            <option value="4">Viudo/a</option>
+                            <option value="1"<% if (data.ESTADO_CIVIL === "CASADO/A") { %>selected<% } %>>CASADO/A</option>
+                            <option value="2"<% if (data.ESTADO_CIVIL === "SOLTERO/A") { %>selected<% } %>>SOLTERO/A</option>
+                            <option value="3"<% if (data.ESTADO_CIVIL === "UNION LIBRE") { %>selected<% } %>>UNION LIBRE</option>
+                            <option value="4"<% if (data.ESTADO_CIVIL === "VIUDO/A") { %>selected<% } %>>VIUDO/A</option>
                         </select>
                     </label>
 
                     <label>
                         <i class='bx bxs-map-pin'></i>
-                        <input type="text" placeholder="Dirección">
+                        <input type="text" placeholder="Dirección" id="direccion" name="direccion" value="<%= data.DIRECCION %>">
                     </label>
                     <label>
                         <i class='bx bx-phone-call'></i>
-                        <input type="tel" placeholder="Fijo">
+                        <input type="tel" placeholder="Fijo" id="fijo" name="fijo" value="<%= data.TELEFONO_FIJO %>">
                     </label>
                     <label>
                         <i class='bx bx-phone-call'></i>
-                        <input type="tel" placeholder="Movil">
+                        <input type="tel" placeholder="Movil" id="movil" name="movil" value="<%= data.TELEFONO_MOVIL %>">
                     </label>
                     <label>
                         <i class='bx bx-envelope' ></i>
-                        <input type="email" placeholder="Ingrese su Correo Electrónico">
+                        <input type="email" placeholder="Ingrese su Correo Electrónico" id="email" name="email" value="<%= data.EMAIL %>">
+                    </label>
+                    <label>
+                        <i class='bx bx-lock-alt' ></i>
+                        <input type="password" placeholder="Ingrese su nueva clave" id="clave" name="clave" required>
+                    </label>
+                    <label>
+                        <i class='bx bx-lock-alt' ></i>
+                        <input type="password" placeholder="Repita la clave" id="clave2" name="clave2" required>
                     </label>
                     <p style="color: #7a7a9a;">Sexo:
-                        <input type="radio" name="hm" value="h"> Hombre
-                        <input type="radio" name="hm" value="m"> Mujer
+                        <input type="radio" name="sexo" value="FEMENINO" <% if (data.SEXO === "FEMENINO") { %>checked<% } %>> Femenino
+                        <input type="radio" name="sexo" value="MASCULINO"<% if (data.SEXO === "MASCULINO") { %>checked<% } %>> Masculino
+                        <input type="radio" name="sexo" value="INTERSEXUALIDAD"<% if (data.SEXO === "INTERSEXUALIDAD") { %>checked<% } %>> Intersex
                     </p>  
                 </form>
-                    <input type="button" value="Modificar Datos" id="sign-in2" class="Btn1">
                 
             </div>
         </div>
@@ -105,6 +119,16 @@
         
         </div>
     </div>
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        const id = searchParams.get("id");
+        var image = document.getElementById('profile-pic');
+        image.src = "/imagenPerfil?refPfp=<%= data.REFERENCIA_PFP %>"
+        var loadFile = function(event) {
+	        image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    <script src="/javascripts/modLogin.js"></script>
     <script src="/javascripts/login.js"></script>
 </body>
 </html>
