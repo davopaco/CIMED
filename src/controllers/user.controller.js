@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     let extArray = file.mimetype.split("/");
     let extension = extArray[extArray.length - 1];
     req.customFileName = cedula.toString() + "." + extension;
-    console.log(req.savePfp);
+    console.log("Guardando imagen en multer");
     cb(null, req.customFileName);
   },
 });
@@ -112,7 +112,7 @@ async function pacienteDB(req, res) {
   } = req.body;
 
   var refPfp;
-
+  console.log("Entró a paciente");
   if (req.savePfp === false) {
     refPfp = req.pfp;
   } else {
@@ -293,7 +293,7 @@ export const registerUser = async (req, res) => {
   try {
     var privilegio = 1;
     console.log(req.body.privilegio);
-    if (req.body.privilegio != false) {
+    if (req.body.privilegio) {
       privilegio = req.body.privilegio;
     }
     if (privilegio == 1) await pacienteDB(req, res);
