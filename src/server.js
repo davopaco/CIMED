@@ -35,8 +35,8 @@ app.use(
 
 export var sessions = [];
 
-app.use(homeRoutes);
 app.use(loginPacRoutes);
+app.use(homeRoutes);
 app.use(citaRoutes);
 app.use(pacienteRoutes);
 app.use(cambioUsuarioRoutes);

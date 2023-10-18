@@ -2,19 +2,34 @@
 <html>
 
 <head>
-    <title>User Access Buttons</title>
-    <style>
-        button {
-            margin: 5px;
-        }
-    </style>
+    <title>CIMED/Login/Paciente</title>
+    <link rel="stylesheet" href="/stylesheets/Login_Usuario.css">
 </head>
 
 <body>
-    <button id="logisticaButton" style="display: none">Logística</button>
-    <button id="pacienteButton" style="display: none">Paciente</button>
-    <button id="medicoButton" style="display: none">Médico</button>
-
+    <div class="container-form inicio">
+        <div class="form-information">
+            <div class="form-information-childs">
+                <h3>Buen día, <%=dataSend.nombre%></h3>
+                <form class="form">
+                    <input type="button" value="Paciente" id="pacienteButton" class="Btn1">
+                    <input type="button" value="Médico" id="medicoButton" class="Btn1">
+                    <input type="button" value="Logística" id="logisticaButton" class="Btn1">
+                </form>
+            </div>
+        </div>
+        <div class="information">
+            <div class="info-childs">
+                <div class="icons_Usuario">
+                    <img src="/imagenPerfil?refPfp=<%= dataSend.refPfp %>">
+                </div>
+                <br>
+                <br>
+                <input type="button" value="Salida de la Sesión" id="sign-in" onclick="redirectLogout()">
+            </div>
+        </div>
+        
+    </div>
     <script>
         var id = "<%= dataSend.id%>";
         var page = "<%= dataSend.page%>";
