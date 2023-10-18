@@ -47,7 +47,8 @@ video{
     border-radius: 10px;
 }
 /* Espacio de aliados*/
-.consorcio{   
+.consorcio{  
+    width: 100%; 
     height: 400px;
 }
 .consorcioUl{
@@ -61,8 +62,8 @@ video{
 }
 
 .Consorcio li img{
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     background-color: #f8f8f8;
     align-items: center;
     justify-content: center;
