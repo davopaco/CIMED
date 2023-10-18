@@ -22,14 +22,6 @@ const storage = multer.diskStorage({
 
 export const upload = multer({ storage: storage });
 
-export const getDatos = async (req, res) => {
-  const [rows] = await pool.query(
-    "Select nombre, id , tipo_sangre, telefono_movil, email, direccion from paciente where id= ?",
-    [req.params.id_paciente]
-  );
-  res.json(rows);
-};
-
 export const modificarDatosVista = async (req, res) => {
   const [datos] = await pool.query(
     "SELECT ID, SEXO, NOMBRE, DATE_FORMAT(FECHA_NACIMIENTO, '%Y-%m-%d') AS FECHA_NACIMIENTO, LUGAR_NACIMIENTO, ESTADO_CIVIL, TELEFONO_MOVIL, TELEFONO_FIJO, EMAIL, DIRECCION, TIPO_SANGRE, REFERENCIA_PFP FROM PACIENTE WHERE ID= ?",

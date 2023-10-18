@@ -9,7 +9,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url(/public/images/receta.jpg);
+    background-image: url(/images/receta.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-size: 100% 100%;

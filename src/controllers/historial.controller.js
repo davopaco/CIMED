@@ -4,59 +4,64 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 export const agregarHistorial = async (req, res) => {
-  const {
-    fecha,
-    sintomas,
-    examen,
-    resultados,
-    alergias,
-    ante_med,
-    ante_fam,
-    medic_ant,
-    paciente,
-    receta_medica,
-    codigo,
-  } = req.body;
-  console.log(req.body);
-  const id_cita = paciente;
-  const [rows] = await pool.query(
-    "SELECT id_medico, paciente_id FROM CITA WHERE ID =?",
-    [id_cita]
-  );
-  console.log(rows);
-  const id_medico = rows[0].id_medico;
-  const id_paciente = rows[0].paciente_id;
-  var lastInsertedID;
-  const [historiales] = await pool.query(
-    "INSERT INTO HISTORIAL_CLINICO (FECHA_FORM, PASADO_MED, SINTOMAS, HISTORIAL_FAMILIAR, HISTORIAL_MEDICACION, ALERGIAS, RESULTADOS_LAB, EXAMEN_FIS, PACIENTE_ID, PROFESIONAL_SALUD_ID) VALUES (?,?,?,?,?,?,?,?,?,?)",
-    [
+  try {
+    const {
       fecha,
-      ante_med,
       sintomas,
+      examen,
+      resultados,
+      alergias,
+      ante_med,
       ante_fam,
       medic_ant,
-      alergias,
-      resultados,
-      examen,
-      id_paciente,
-      id_medico,
-    ]
-  );
-
-  lastInsertedID = historiales.insertId;
-
-  var recetas;
-  if (receta_medica == true) {
-    [recetas] = await pool.query(
-      "INSERT INTO RECETA_MEDICA (CODIGO_MEDICAMENTO, PROFESIONAL_SALUD_ID, HISTORIAL_CLINICO_ID, ID_PACIENTE) VALUES (?,?,?,?)",
-      [codigo, id_medico, lastInsertedID, id_paciente]
+      paciente,
+      receta_medica,
+      codigo,
+    } = req.body;
+    console.log(req.body);
+    const id_cita = paciente;
+    const [rows] = await pool.query(
+      "SELECT id_medico, paciente_id FROM CITA WHERE ID =?",
+      [id_cita]
     );
-  }
+    console.log(rows);
+    const id_medico = rows[0].id_medico;
+    const id_paciente = rows[0].paciente_id;
+    var lastInsertedID;
+    const [historiales] = await pool.query(
+      "INSERT INTO HISTORIAL_CLINICO (FECHA_FORM, PASADO_MED, SINTOMAS, HISTORIAL_FAMILIAR, HISTORIAL_MEDICACION, ALERGIAS, RESULTADOS_LAB, EXAMEN_FIS, PACIENTE_ID, PROFESIONAL_SALUD_ID) VALUES (?,?,?,?,?,?,?,?,?,?)",
+      [
+        fecha,
+        ante_med,
+        sintomas,
+        ante_fam,
+        medic_ant,
+        alergias,
+        resultados,
+        examen,
+        id_paciente,
+        id_medico,
+      ]
+    );
 
-  if (historiales.affectedRows === 0)
-    return res.status(404).json({ message: "Historial no agregado" });
-  if (historiales.affectedRows > 0)
-    return res.status(200).json({ message: "Historial agregado" });
+    lastInsertedID = historiales.insertId;
+
+    var recetas;
+    if (receta_medica == true) {
+      [recetas] = await pool.query(
+        "INSERT INTO RECETA_MEDICA (CODIGO_MEDICAMENTO, PROFESIONAL_SALUD_ID, HISTORIAL_CLINICO_ID, ID_PACIENTE) VALUES (?,?,?,?)",
+        [codigo, id_medico, lastInsertedID, id_paciente]
+      );
+    }
+
+    if (historiales.affectedRows === 0)
+      return res.status(404).json({ message: "Historial no agregado" });
+    if (historiales.affectedRows > 0)
+      return res.status(200).json({ message: "Historial agregado" });
+  } catch (error) {
+    return res.status(500).json({ message: "Error al agregar historial" });
+    console.log(error);
+  }
 };
 
 export const getHistorial = async (req, res) => {

@@ -36,6 +36,10 @@ function redirectAlianza_Doctor() {
   location.href = "Alianza_consulta_Doctor.html";
 }
 
+function redirectModif_Datos_Usuario() {
+  window.location.href = `/medico/modificar?id=${id}`;
+}
+
 function redirectLogout() {
   location.href = "/logout";
 }
