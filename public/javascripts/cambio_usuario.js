@@ -29,6 +29,9 @@ logButton.addEventListener("click", (e) => {
   window.location.href = `/logistica/${id}?id=${id}`;
 });
 
+function redirectLogout() {
+  location.href = "/logout";
+}
+
 console.log(page);
-// Call the function to display buttons
 showButtons(page);

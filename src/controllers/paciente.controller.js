@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     const cedula = req.query.id;
     let extArray = file.mimetype.split("/");
-    let extension = extArray[extArray.length - 1];
+    let extension = "jpeg";
     console.log("Guardando imagen.");
     req.customFileName = cedula.toString() + "." + extension;
     cb(null, req.customFileName);

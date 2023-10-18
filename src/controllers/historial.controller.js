@@ -91,3 +91,13 @@ export const defaultR = async (req, res) => {
   const data = rows1;
   res.render("Historial.ejs", { data, codigosMed, meds });
 };
+
+export const getModificarHistorial = async (req, res) => {
+  const [rows] = await pool.query(
+    "SELECT DATE_FORMAT(FECHA_FORM, '%Y-%m-%d') AS FECHA_FORM, PACIENTE_ID, PASADO_MED, SINTOMAS, ALERGIAS, RESULTADOS_LAB, PASADO_MED, P.NOMBRE FROM HISTORIAL_CLINICO HC, PACIENTE P WHERE PROFESIONAL_SALUD_ID = ? AND PACIENTE_ID = P.ID",
+    [req.query.id]
+  );
+  const data = rows;
+  console.log(data);
+  res.render("modHistorial.ejs", { data });
+};

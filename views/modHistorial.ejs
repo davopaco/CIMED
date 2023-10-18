@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/public/stylesheets/modHistorial.css">
-    <link rel="stylesheet" href="../stylesheets/modHistorial.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/stylesheets/modHistorial.css">
+  <link rel="stylesheet" href="../stylesheets/modHistorial.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
+
 <body>
-    <div class="container">
-        <form class="form" method="get" id="mod_historial">
-            <div class="fields">
-                <div class="input-field">
-                    <label>Seleccione Historial</label>
-                    <br>
-                    <form id="cita-form">
-                        <select id="paciente" name="paciente">
-                            <option value="">Seleccione el paciente.</option>
-                            <% if (data) {%>
-                                <% for (var i =0; i< data.length; i++) {%>
-                                    <option value="<%= data[i].id %>"><%= data[i].nombre %> | <%= data[i].fecha_asig %></option>
-                                <% } %>
-                            <% } %>
-                        </select>
-                    </form>
-                </div>
-                <button type="reset">Buscar</button>
-            </div>
-        </form>
-        <br>
-        <header>Ingrese los datos que quiera modificar</header>
+  <div class="container">
+    <form class="form" method="get" id="mod_historial">
+      <div class="fields">
+        <div class="input-field">
+          <label>Seleccione Historial</label>
+          <br>
+          <form id="cita-form">
+            <select id="paciente" name="paciente">
+              <option value="">Seleccione el paciente.</option>
+              <% if (data) {%>
+              <% for (var i =0; i< data.length; i++) {%>
+              <option value="<%= data[i].PACIENTE_ID %>"><%= data[i].NOMBRE %> | <%= data[i].FECHA_FORM %></option>
+              <% } %>
+              <% } %>
+            </select>
+          </form>
+        </div>
+        <button type="reset">Buscar</button>
+      </div>
+    </form>
+    <br>
+    <header>Ingrese los datos que quiera modificar</header>
 
-        <form action="#" method="post">
-            <div class="datos usuario">
-                <div class="fields">
-                    <div class="input-field">
-                        <label>Síntomas</label>
-                        <input type="text"  placeholder="Ingrese los síntomas del paciente" required>
-        
-                    </div>
+    <form id="modif-historial">
+      <div class="datos usuario">
+        <div class="fields">
+          <div class="input-field">
+            <label>Síntomas</label>
+            <input type="text" placeholder="Ingrese los síntomas del paciente" required>
 
-                    <div class="input-field">
-                        <label>Alergias</label>
+          </div>
 
-                        <input type="text" placeholder="Ingrese las alergias del paciente" required>
-                    </div>
+          <div class="input-field">
+            <label>Alergias</label>
 
-                    <div class="input-field">
-                        <label>Resultado Laboratorio</label>
-                        <input type="text" placeholder="Ingrese los resultados del paciente"  required>
-                    </div>
+            <input type="text" placeholder="Ingrese las alergias del paciente" required>
+          </div>
 
-                    <div class="input-field">
-                        <label>Pasado Médico</label>
-                        <input type="text" placeholder="Ingrese el pasado médico del paciente">
-                    </div>
-                </div>
-            </div>
-            <button type="reset">Guardar Cambios</button>
-        </form>
-    </div>
+          <div class="input-field">
+            <label>Resultado Laboratorio</label>
+            <input type="text" placeholder="Ingrese los resultados del paciente" required>
+          </div>
+
+          <div class="input-field">
+            <label>Pasado Médico</label>
+            <input type="text" placeholder="Ingrese el pasado médico del paciente">
+          </div>
+        </div>
+      </div>
+      <button type="reset">Guardar Cambios</button>
+    </form>
+  </div>
 
 </body>
 
 <script>
-    function redirectInit(){
-        location.href = "/";
-    }
+  function redirectInit() {
+    location.href = "/";
+  }
 </script>
+<script src="/javascripts/modificarHistorial.js"></script>
 
 </html>

@@ -7,7 +7,7 @@ import {
 
 const router = Router();
 router.get("/citas", defaultR);
-router.post("/citas/:id_paciente", postCitas);
 router.get("/citas/doctor/:id_medico", getCitas);
+router.post("/citas/:id_paciente", postCitas);
 
 export default router;
